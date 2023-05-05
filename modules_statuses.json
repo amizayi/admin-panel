@@ -1,4 +1,5 @@
 {
     "Core": true,
-    "Wire": true
+    "Wire": true,
+    "Filament": true
 }

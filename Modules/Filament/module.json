@@ -1,0 +1,11 @@
+{
+    "name": "Filament",
+    "alias": "filament",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Filament\\Providers\\FilamentServiceProvider"
+    ],
+    "files": []
+}
