@@ -8,7 +8,8 @@
         }
     ],
     "require": {
-        "filament/filament": "^2.17"
+        "filament/filament": "^2.17",
+        "realmrhex/filament-modular": "^0.2.0"
     },
     "extra": {
         "laravel": {

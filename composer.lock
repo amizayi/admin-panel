@@ -3892,6 +3892,64 @@
             "time": "2023-04-15T23:01:58+00:00"
         },
         {
+            "name": "realmrhex/filament-modular",
+            "version": "0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RealMrHex/filament-modular.git",
+                "reference": "439e13a522255f1e79902a003bc35bf6607b4078"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RealMrHex/filament-modular/zipball/439e13a522255f1e79902a003bc35bf6607b4078",
+                "reference": "439e13a522255f1e79902a003bc35bf6607b4078",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.0",
+                "nwidart/laravel-modules": ">=9",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "dev-master",
+                "orchestra/testbench": "dev-develop",
+                "phpunit/phpunit": "^10.1@dev"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RealMrHex\\FilamentModular\\FilamentModularServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RealMrHex\\FilamentModular\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Armin Hooshmand",
+                    "email": "RealMrHex@gmail.com"
+                },
+                {
+                    "name": "Hessam Taghvaei",
+                    "email": "mohaphez@gmail.com"
+                }
+            ],
+            "description": "Modular support for filament.",
+            "support": {
+                "issues": "https://github.com/RealMrHex/filament-modular/issues",
+                "source": "https://github.com/RealMrHex/filament-modular/tree/0.2"
+            },
+            "time": "2023-04-24T21:33:00+00:00"
+        },
+        {
             "name": "ryangjchandler/blade-capture-directive",
             "version": "v0.3.0",
             "source": {
