@@ -9,70 +9,69 @@ use Nwidart\Modules\Laravel\Module;
 class ModuleRouteServiceProvider extends ServiceProvider
 {
     /**
-     * Define the routes for the application.
+     * Maps the web and API routes for all enabled modules.
      *
      * @return void
      */
     public function map(): void
     {
-        $this->initModules();
+        $this->mapModuleRoutes($this->app['modules']->allEnabled());
     }
 
     /**
-     * Initialize specified list of modules.
+     * Maps the web and API routes for the given modules.
      *
-     * @note if module list not specified, all enabled modules will list.
+     * @param iterable $modules The modules to map routes for.
      *
      * @return void
      */
-    private function initModules(): void
+    private function mapModuleRoutes(iterable $modules): void
     {
-        $modules = $this->app['modules']->allEnabled();
-
-        foreach ($modules as $module)
-            $this->mapModuleRoutes($module);
-    }
-
-
-    /**
-     * Map routes of the given module.
-     *
-     * @param Module $module
-     *
-     * @return void
-     */
-    private function mapModuleRoutes(Module $module): void
-    {
-        $base = $module->getPath();
-        $this->mapWebRoutes("$base/Routes/web.php");
-        $this->mapApiRoutes("$base/Routes/api.php");
+        foreach ($modules as $module) {
+            $base = $module->getPath();
+            $this->mapWebRoutes("$base/Routes/web.php");
+            $this->mapApiRoutes("$base/Routes/api.php");
+        }
     }
 
     /**
-     * Map public routes.
+     * Maps web routes for a given path.
      *
-     * @param string $path
+     * @param string $path The path to the web routes file.
      *
      * @return void
      */
     private function mapWebRoutes(string $path): void
     {
-        if (!file_exists($path)) return;
-
-        Route::group(['middleware' => ['web']], fn() => require_once $path);
+        $this->mapRoutes($path, ['web']);
     }
 
     /**
-     * Map api routes.
+     * Maps API routes for a given path.
      *
-     * @param $path
+     * @param string $path The path to the API routes file.
      *
      * @return void
      */
-    private function mapApiRoutes($path): void
+    private function mapApiRoutes(string $path): void
+    {
+        $this->mapRoutes($path, ['api'], 'api');
+    }
+
+    /**
+     * Maps routes for a given path and middleware.
+     *
+     * @param string      $path        The path to the routes file.
+     * @param array       $middlewares The middleware to apply to the routes.
+     * @param string|null $prefix      The route prefix (for API routes).
+     *
+     * @return void
+     */
+    private function mapRoutes(string $path, array $middlewares, ?string $prefix = null): void
     {
         if (!file_exists($path)) return;
 
-        Route::group(['prefix' => 'api', 'middleware' => ['api']], fn() => require_once $path);
+        Route::group(['middleware' => $middlewares, 'prefix' => $prefix], fn() => require_once $path);
     }
+
 }
