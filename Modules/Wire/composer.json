@@ -7,6 +7,9 @@
             "email": "realDevAmiza@gmail.com"
         }
     ],
+    "require": {
+        "livewire/livewire": "^2.12"
+    },
     "extra": {
         "laravel": {
             "providers": [],
