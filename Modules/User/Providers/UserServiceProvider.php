@@ -1,20 +1,21 @@
 <?php
 
-namespace Modules\Filament\Providers;
+namespace Modules\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Factory;
 
-class FilamentServiceProvider extends ServiceProvider
+class UserServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'Filament';
+    protected $moduleName = 'User';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'filament';
+    protected $moduleNameLower = 'user';
 
     /**
      * Boot the application events.
@@ -23,6 +24,7 @@ class FilamentServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
     }
 
     /**
@@ -32,5 +34,6 @@ class FilamentServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
     }
 }
