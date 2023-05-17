@@ -2,36 +2,40 @@
 
 namespace Modules\User\Admin\Resources;
 
-use Filament\Tables\Columns\TextColumn;
-use Modules\User\Admin\Resources\UserResource\Pages;
-use Modules\User\Admin\Resources\UserResource\RelationManagers;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Filament\Traits\CleanResourceDetails;
+use Modules\User\Admin\Resources\UserResource\Pages;
 use Modules\User\Entities\User;
 
 class UserResource extends Resource
 {
+    use CleanResourceDetails;
+
     protected static ?string $model = User::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $recordTitleAttribute = 'full_name';
+    protected static ?string $slug = 'users';
 
-    protected static ?string $recordTitleAttribute = 'name';
+    /**
+     * Detail Fetcher Key
+     *
+     * @var string $key
+     */
+    private static string $key = 'user';
 
-    protected static ?string $navigationLabel = 'کاربران';
-
-    protected static ?string $navigationGroup = 'مدیریت سیستم';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\Card::make()->columns()->schema([
-                    Forms\Components\TextInput::make('name')->required(),
+                    Forms\Components\TextInput::make('full_name')->required(),
                     Forms\Components\TextInput::make('email')->email()->unique()->required(),
                     Forms\Components\TextInput::make('password')->required()->confirmed('password_confirmation')->password()->hiddenOn('edit'),
                     Forms\Components\TextInput::make('password_confirmation')->password()->hiddenOn('edit'),
@@ -49,7 +53,7 @@ class UserResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->label(__('user::table.id'))->sortable(),
-                TextColumn::make('name')->label(__('user::table.name'))->searchable()->sortable(),
+                TextColumn::make('full_name')->label(__('user::table.name'))->searchable()->sortable(),
                 TextColumn::make('email')->label(__('user::table.email'))->searchable()->sortable(),
                 TextColumn::make('created_at')->label(__('user::table.created_at'))->sortable(),
             ])
