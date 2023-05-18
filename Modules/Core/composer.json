@@ -14,6 +14,9 @@
             }
         }
     },
+    "require": {
+        "morilog/jalali": "^3.4"
+    },
     "autoload": {
         "psr-4": {
             "Modules\\Core\\": ""

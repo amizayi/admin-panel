@@ -17,17 +17,16 @@ class UserResource extends Resource
 {
     use CleanResourceDetails;
 
-    protected static ?string $model = User::class;
-    protected static ?string $navigationIcon = 'heroicon-o-users';
-    protected static ?string $recordTitleAttribute = 'full_name';
-    protected static ?string $slug = 'users';
-
     /**
      * Detail Fetcher Key
      *
      * @var string $key
      */
     private static string $key = 'user';
+    protected static ?string $model = User::class;
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $recordTitleAttribute = 'full_name';
+    protected static ?string $slug = 'users';
 
 
     public static function form(Form $form): Form
@@ -52,10 +51,21 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->label(__('user::table.id'))->sortable(),
-                TextColumn::make('full_name')->label(__('user::table.name'))->searchable()->sortable(),
-                TextColumn::make('email')->label(__('user::table.email'))->searchable()->sortable(),
-                TextColumn::make('created_at')->label(__('user::table.created_at'))->sortable(),
+                TextColumn::make('id')
+                    ->label(__('user::table.id'))
+                    ->sortable(),
+                TextColumn::make('full_name')
+                    ->label(__('user::table.name'))
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('email')
+                    ->label(__('user::table.email'))
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('created_at')
+                    ->label(__('user::table.created_at'))
+                    ->getStateUsing(fn($record) => jdate($record->created_at)->ago())
+                    ->sortable(),
             ])
             ->filters([
                 //
