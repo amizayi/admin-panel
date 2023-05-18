@@ -53,18 +53,22 @@ class UserResource extends Resource
             ->columns([
                 TextColumn::make('id')
                     ->label(__('user::table.id'))
+                    ->toggleable()
                     ->sortable(),
                 TextColumn::make('full_name')
                     ->label(__('user::table.name'))
                     ->searchable()
+                    ->toggleable()
                     ->sortable(),
                 TextColumn::make('email')
                     ->label(__('user::table.email'))
                     ->searchable()
+                    ->toggleable()
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label(__('user::table.created_at'))
                     ->getStateUsing(fn($record) => jdate($record->created_at)->ago())
+                    ->toggleable()
                     ->sortable(),
             ])
             ->filters([
