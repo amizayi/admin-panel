@@ -1,6 +1,3 @@
-Certainly! Here's an updated version of the README.md with emojis added to each line:
-
-```markdown
 # Admin Panel 💼
 
 ## Description 📝
