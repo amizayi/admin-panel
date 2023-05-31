@@ -827,12 +827,12 @@
             "version": "v2.17.41",
             "source": {
                 "type": "git",
-                "url": "https://github.com/filamentphp/app.git",
+                "url": "https://github.com/filamentphp/panels.git",
                 "reference": "d016e8e394f4658bf5e867aa71b70aab01f9a038"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/app/zipball/d016e8e394f4658bf5e867aa71b70aab01f9a038",
+                "url": "https://api.github.com/repos/filamentphp/panels/zipball/d016e8e394f4658bf5e867aa71b70aab01f9a038",
                 "reference": "d016e8e394f4658bf5e867aa71b70aab01f9a038",
                 "shasum": ""
             },
