@@ -19,13 +19,13 @@ class UserTableSeeder extends Seeder
         Model::unguard();
 
         User::create([
-           'username' => "DevAmiza",
-           'first_name' => "Amirreza",
-           'last_name' => "Rezaei",
-           'full_name' => "Amirreza Rezaei",
-           'email' => "admin@admin.com",
+           'username'          => "DevAmiza",
+           'first_name'        => "Amirreza",
+           'last_name'         => "Rezaei",
+           'full_name'         => "Amirreza Rezaei",
+           'email'             => "admin@admin.com",
            'email_verified_at' => now(),
-           'password' => Hash::make("adminadmin"),
+           'password'          => Hash::make("adminadmin"),
         ]);
     }
 }
