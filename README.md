@@ -56,6 +56,3 @@ Contributions are welcome! If you encounter any issues or have suggestions for i
 
 ## License 📜
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). You are free to modify and distribute the code, but please include appropriate attribution.
-```
-
-I hope you find these emojis add a touch of fun to your README.md file!
