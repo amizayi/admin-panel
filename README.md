@@ -37,7 +37,7 @@ Admin Panel is a Laravel project that serves as a management dashboard, built us
    ```
 6. Run the database migrations and seed the necessary data:
    ```shell
-   php artisan migrate --seed
+   php artisan module:migrate-fresh --seed
    ```
 7. Serve the application locally:
    ```shell
