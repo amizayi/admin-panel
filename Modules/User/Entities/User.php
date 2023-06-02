@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\User\Database\factories\UserFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar
 {
@@ -37,6 +39,25 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory(): Factory
+    {
+        return UserFactory::new();
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Event listener for "creating" event
+        static::creating(function ($user) {
+            // Concatenate the first_name and last_name fields
+            $user->full_name = $user->first_name . ' ' . $user->last_name;
+        });
+    }
 
     public function canAccessFilament(): bool
     {
