@@ -17,15 +17,29 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        // Make Super Admin
+        $this->mkSuperAdmin();
+        // Make Many Users
+        User::factory()->times(100)->create();
+    }
 
+    /**
+     * Make Super Admin
+     *
+     * @return self
+     */
+    private function mkSuperAdmin(): self
+    {
         User::create([
-           'username'          => "DevAmiza",
-           'first_name'        => "Amirreza",
-           'last_name'         => "Rezaei",
-           'full_name'         => "Amirreza Rezaei",
-           'email'             => "admin@admin.com",
-           'email_verified_at' => now(),
-           'password'          => Hash::make("adminadmin"),
+            'username'          => "DevAmiza",
+            'first_name'        => "Amirreza",
+            'last_name'         => "Rezaei",
+            'full_name'         => "Amirreza Rezaei",
+            'email'             => "admin@admin.com",
+            'email_verified_at' => now(),
+            'password'          => Hash::make("adminadmin"),
         ]);
+
+        return $this;
     }
 }
