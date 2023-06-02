@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Modules\User\Database\factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\User\MCF\UserMCF;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar
 {
@@ -22,14 +23,14 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
      *
      * @var array<int, string>
      */
-    protected $guarded = ['id'];
+    protected $guarded = [UserMCF::ID];
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = ['password', 'remember_token',];
+    protected $hidden = [UserMCF::PASSWORD, UserMCF::EMAIL_VERIFIED_AT];
 
     /**
      * The attributes that should be cast.
@@ -37,7 +38,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        UserMCF::EMAIL_VERIFIED_AT => 'datetime',
     ];
 
     /**
@@ -55,7 +56,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
         // Event listener for "creating" event
         static::creating(function ($user) {
             // Concatenate the first_name and last_name fields
-            $user->full_name = $user->first_name . ' ' . $user->last_name;
+            $user->{UserMCF::FULL_NAME} = $user->{UserMCF::FIRST_NAME} . ' ' . $user->{UserMCF::LAST_NAME};
         });
     }
 
@@ -77,7 +78,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     public function name(): Attribute
     {
         return new Attribute(
-            get: fn() => $this?->full_name ?? "user-$this->id"
+            get: fn() => $this?->{UserMCF::FULL_NAME} ?? "user-".$this->{UserMCF::ID}
         );
     }
 }
