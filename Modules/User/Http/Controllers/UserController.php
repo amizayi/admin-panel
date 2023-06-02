@@ -2,10 +2,15 @@
 
 namespace Modules\User\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Modules\Api\Http\Controllers\ApiController;
+use Modules\User\Entities\User;
 
-class UserController extends Controller
+
+class UserController extends ApiController
 {
-
+    public function index()
+    {
+        $data = User::all();
+        return $this->successResponse($data,"list of users");
+    }
 }
