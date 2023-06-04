@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\User\MCF;
+namespace Modules\User\Fields;
 
 /*
 |--------------------------------------------------------------------------
@@ -8,7 +8,7 @@ namespace Modules\User\MCF;
 |--------------------------------------------------------------------------
 */
 
-class UserMCF
+class UserFields
 {
     const ID                = 'id';
     const USERNAME          = 'username';
