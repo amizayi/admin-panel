@@ -22,7 +22,7 @@ trait ApiResponseTrait
         return response()->json([
             'status'  => $status,
             'message' => $message,
-            'data'    => $data
+            'result'  => $data
         ], $status);
     }
 
