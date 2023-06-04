@@ -4,7 +4,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\User\MCF\UserMCF;
+use Modules\User\Fields\UserFields;
 
 return new class extends Migration
 {
@@ -17,13 +17,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string(UserMCF::USERNAME);
-            $table->string(UserMCF::FIRST_NAME)->nullable();
-            $table->string(UserMCF::LAST_NAME)->nullable();
-            $table->string(UserMCF::FULL_NAME)->nullable();
-            $table->string(UserMCF::EMAIL)->unique();
-            $table->timestamp(UserMCF::EMAIL_VERIFIED_AT)->nullable();
-            $table->string(UserMCF::PASSWORD);
+            $table->string(UserFields::USERNAME);
+            $table->string(UserFields::FIRST_NAME)->nullable();
+            $table->string(UserFields::LAST_NAME)->nullable();
+            $table->string(UserFields::FULL_NAME)->nullable();
+            $table->string(UserFields::EMAIL)->unique();
+            $table->timestamp(UserFields::EMAIL_VERIFIED_AT)->nullable();
+            $table->string(UserFields::PASSWORD);
             $table->rememberToken();
             $table->timestamps();
         });
