@@ -3,12 +3,9 @@
 namespace Modules\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Modules\Api\Traits\ApiResponseTrait;
 
 class UserRequest extends FormRequest
 {
-    use ApiResponseTrait;
-
     /**
      * Get the validation rules that apply to the request.
      *
