@@ -2,10 +2,14 @@
 
 namespace Modules\Api\Traits;
 
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\JsonResponse;
+use Exception;
+use Throwable;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
+
 
 trait ApiResponseTrait
 {
@@ -23,56 +27,83 @@ trait ApiResponseTrait
             'status'  => $status,
             'message' => $message,
             'result'  => $data
-        ], $status);
+        ], Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     /**
      * Send an error response with the provided error message, optional error messages, and status code.
      *
-     * @param string $error
-     * @param array $errorMessages
+     * @param string $errorMessages
+     * @param array|string $errors
      * @param int $status
      * @return JsonResponse
      */
-    public function errorResponse(string $error, array $errorMessages = [], int $status = Response::HTTP_NOT_FOUND): JsonResponse
+    public function errorResponse(string $errorMessages, array|string $errors, int $status = Response::HTTP_NOT_FOUND): JsonResponse
     {
         return response()->json([
             'status'  => false,
-            'message' => $error,
-            'errors'  => is_array($errorMessages) ? $errorMessages : null
+            'message' => $errorMessages,
+            'errors'  => $errors
         ], $status);
     }
 
-
     /**
-     * Handle a failed validation attempt.
+     * Handle the given parse error exception.
      *
-     * @param Validator $validator
-     * @return void
-     *
-     * @throws ValidationException
-     */
-    protected function failedValidation(Validator $validator): void
-    {
-        throw new ValidationException(
-            $validator,
-            $this->failedValidationResponse($validator->errors())
-        );
-    }
-
-
-    /**
-     * Send the response after a failed validation attempt.
-     *
-     * @param $errors
+     * @param $getMessage
+     * @param Exception|Throwable $exception
      * @return JsonResponse
      */
-    protected function failedValidationResponse($errors): JsonResponse
+    protected function processParseError($getMessage, Exception|Throwable $exception): JsonResponse
     {
+        $detail = [
+            'file' => $exception->getFile(),
+            'line' => $exception->getLine(),
+            'code' => $exception->getCode()
+        ];
+
+        // Log the error message and stack trace
+        logger()->error("⚠️ $getMessage", $detail);
+
+        // Return a JSON response
         return response()->json([
-            'message' => 'The given data was invalid.',
-            'errors'  => $errors,
-        ], Response::HTTP_UNPROCESSABLE_ENTITY);
+            'status'  => false,
+            'message' => $getMessage,
+            'errors'  => $detail
+        ], Response::HTTP_BAD_REQUEST);
     }
+
+
+//    /**
+//     * Handle a failed validation attempt.
+//     *
+//     * @param Validator $validator
+//     * @return void
+//     *
+//     * @throws ValidationException
+//     */
+//    protected function failedValidation(Validator $validator): void
+//    {
+//        throw new ValidationException(
+//            $validator,
+//            $this->failedValidationResponse((array)$validator->errors())
+//        );
+//    }
+
+
+//    /**
+//     * Send the response after a failed validation attempt.
+//     *
+//     * @param array $errors
+//     * @return JsonResponse
+//     */
+//    protected function failedValidationResponse(array $errors): JsonResponse
+//    {
+//        return response()->json([
+//            'status'  => false,
+//            'message' => 'The given data was invalid.',
+//            'errors'  => $errors,
+//        ], Response::HTTP_UNPROCESSABLE_ENTITY);
+//    }
 
 }
