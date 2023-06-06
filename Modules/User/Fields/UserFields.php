@@ -18,4 +18,5 @@ class UserFields
     const EMAIL             = 'email';
     const EMAIL_VERIFIED_AT = 'email_verified_at';
     const PASSWORD          = 'password';
+    const CREATED_AT        = 'created_at';
 }
