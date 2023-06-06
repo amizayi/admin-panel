@@ -5,6 +5,7 @@ namespace Modules\User\Http\Controllers\Api\V1;
 
 use Modules\Api\Http\Controllers\ApiController;
 use Modules\User\Entities\User;
+use Modules\User\Transformers\V1\UserResource;
 use Modules\User\Transformers\V1\UserResourceCollection;
 
 class UserController extends ApiController
@@ -17,6 +18,6 @@ class UserController extends ApiController
 
     public function show(User $user)
     {
-        return $this->successResponse($user);
+        return $this->successResponse(new UserResource($user));
     }
 }
