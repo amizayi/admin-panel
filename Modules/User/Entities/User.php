@@ -2,10 +2,6 @@
 
 namespace Modules\User\Entities;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Models\Contracts\HasAvatar;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -14,7 +10,7 @@ use Modules\User\Database\factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\User\Fields\UserFields;
 
-class User extends Authenticatable implements FilamentUser, HasAvatar
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -58,27 +54,5 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
             // Concatenate the first_name and last_name fields
             $user->{UserFields::FULL_NAME} = $user->{UserFields::FIRST_NAME} . ' ' . $user->{UserFields::LAST_NAME};
         });
-    }
-
-    public function canAccessFilament(): bool
-    {
-        return true;
-    }
-
-    public function getFilamentAvatarUrl(): ?string
-    {
-        return null;
-    }
-
-    /**
-     * Get user's name for filament
-     *
-     * @return Attribute
-     */
-    public function name(): Attribute
-    {
-        return new Attribute(
-            get: fn() => $this?->{UserFields::FULL_NAME} ?? "user-".$this->{UserFields::ID}
-        );
     }
 }

@@ -1,7 +1,5 @@
 {
     "Core": true,
-    "Wire": true,
-    "Filament": true,
-    "User": true,
-    "Api": true
+    "Api": true,
+    "User": true
 }

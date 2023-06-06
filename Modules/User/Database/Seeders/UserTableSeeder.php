@@ -17,14 +17,14 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        // Make Super Admin
+        // Make Super Filament
         $this->mkSuperAdmin();
         // Make Many Users
         User::factory()->times(100)->create();
     }
 
     /**
-     * Make Super Admin
+     * Make Super Filament
      *
      * @return self
      */
