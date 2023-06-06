@@ -36,7 +36,7 @@ class UserController extends ApiController
 
         $newUser = User::create($inputs);
 
-        return $this->successResponse(new UserResource($newUser));
+        return $this->successResponse(new UserResource($newUser),'user created.');
     }
 
     /**
@@ -63,7 +63,19 @@ class UserController extends ApiController
 
         $user->update($inputs);
 
-        return $this->successResponse($user);
+        return $this->successResponse(new UserResource($user),'user updated.');
+    }
+
+    /**
+     * Delete User
+     *
+     * @param User $user
+     * @return JsonResponse
+     */
+    public function destroy(User $user): JsonResponse
+    {
+        $user->delete();
+        return $this->successResponse(new UserResource($user),'user deleted.');
     }
 
     /**
