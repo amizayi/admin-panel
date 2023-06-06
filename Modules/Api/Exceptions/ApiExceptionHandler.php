@@ -33,10 +33,6 @@ class ApiExceptionHandler extends ExceptionHandler
                 Response::HTTP_UNPROCESSABLE_ENTITY
             );
 
-        if ($e instanceof AuthenticationException)
-            if(!str_contains(request()->url(), '/api/'))
-              return redirect()->guest('admin/login');
-
         // Handle all other exceptions
         return $this->processParseError($e->getMessage(), $e);
     }
