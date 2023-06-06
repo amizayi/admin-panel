@@ -21,5 +21,4 @@ Route::prefix('/user')->controller(UserController::class)->group(function () {
     Route::get('/show/{user}',       'show');
     Route::put('/update/{user}',     'update');
     Route::delete('/destroy/{user}', 'destroy');
-    Route::post('/multi-delete',     'delete');
 });

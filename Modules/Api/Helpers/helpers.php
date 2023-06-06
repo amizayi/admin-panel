@@ -23,4 +23,19 @@ if (!function_exists('formatPaginationDetails')) {
             'default_path'   => $paginationData->path(),
         ];
     }
+
+    if (!function_exists('__response')) {
+        /**
+         * Format the pagination details into an array.
+         *
+         * @param string $name
+         * @param string $type
+         * @param string $key
+         * @return string
+         */
+        function __response(string $name = "", string $type = "base", string $key = "success"): string
+        {
+            return __("api::response.$key.$type",['name' => $name]);
+        }
+    }
 }

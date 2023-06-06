@@ -20,7 +20,7 @@ class UserController extends ApiController
     public function index(): JsonResponse
     {
         $data = User::paginate();
-        return $this->successResponse(new UserResourceCollection($data), "list of users");
+        return $this->successResponse(new UserResourceCollection($data), __response());
     }
 
     /**
@@ -36,7 +36,7 @@ class UserController extends ApiController
 
         $newUser = User::create($inputs);
 
-        return $this->successResponse(new UserResource($newUser),'user created.');
+        return $this->successResponse(new UserResource($newUser), __response('user','store'));
     }
 
     /**
@@ -63,7 +63,7 @@ class UserController extends ApiController
 
         $user->update($inputs);
 
-        return $this->successResponse(new UserResource($user),'user updated.');
+        return $this->successResponse(new UserResource($user), __response('user','update'));
     }
 
     /**
@@ -75,7 +75,7 @@ class UserController extends ApiController
     public function destroy(User $user): JsonResponse
     {
         $user->delete();
-        return $this->successResponse(new UserResource($user),'user deleted.');
+        return $this->successResponse(new UserResource($user),__response('user','destroy'));
     }
 
     /**
