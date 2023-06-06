@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\User\Http\Controllers;
+namespace Modules\User\Http\Controllers\Api\V1;
+
 
 use Modules\Api\Http\Controllers\ApiController;
 use Modules\User\Entities\User;
-use Modules\User\Transformers\UserResourceCollection;
-
+use Modules\User\Transformers\V1\UserResourceCollection;
 
 class UserController extends ApiController
 {
