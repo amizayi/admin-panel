@@ -3,7 +3,9 @@
 namespace Modules\Api\Exceptions;
 
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\JsonResponse;
@@ -20,9 +22,9 @@ class ApiExceptionHandler extends ExceptionHandler
      *
      * @param  Request  $request
      * @param  Exception|Throwable $e
-     * @return JsonResponse
+     * @return RedirectResponse|JsonResponse
      */
-    public function render($request, Exception|Throwable $e): JsonResponse
+    public function render($request, Exception|Throwable $e): RedirectResponse|JsonResponse
     {
         if ($e instanceof ValidationException)
             return $this->errorResponse(
@@ -30,6 +32,10 @@ class ApiExceptionHandler extends ExceptionHandler
                 $e->validator->getMessageBag()->toArray(),
                 Response::HTTP_UNPROCESSABLE_ENTITY
             );
+
+        if ($e instanceof AuthenticationException)
+            if(!str_contains(request()->url(), '/api/'))
+              return redirect()->guest('admin/login');
 
         // Handle all other exceptions
         return $this->processParseError($e->getMessage(), $e);
