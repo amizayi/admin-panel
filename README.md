@@ -1,12 +1,13 @@
+Here is the updated `README.md` file without any reference to Filament:
+
 # Admin Panel 💼
 
 ## Description 📝
-Admin Panel is a Laravel project that serves as a management dashboard, built using the Filament and Modular packages. It provides a user-friendly interface for managing various aspects of your application.
+Admin Panel is a Laravel project that serves as a management dashboard. It provides a user-friendly interface for managing various aspects of your application.
 
 ## Features ✨
 - User-friendly dashboard with intuitive navigation
 - Modular structure for easy customization and extension
-- Integration with Filament package for enhanced admin functionality
 - Role-based access control for managing user permissions
 - CRUD operations for managing data entities
 - Responsive design for seamless user experience across devices
