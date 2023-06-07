@@ -1,5 +1,6 @@
 {
     "Core": true,
     "Api": true,
-    "User": true
+    "User": true,
+    "Permission": true
 }
