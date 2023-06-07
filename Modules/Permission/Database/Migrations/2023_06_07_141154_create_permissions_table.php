@@ -16,19 +16,22 @@ return new class extends Migration {
         $tableNames  = config('permission.table_names');
         $columnNames = config('permission.column_names');
 
-
-        Schema::create($tableNames['permissions'], function (Blueprint $table) {
+        Schema::create($tableNames['permissions'], function (Blueprint $table) use($tableNames) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('title')->nullable();
+            $table->foreignId('parent_id')->nullable()->constrained($tableNames['permissions']);
             $table->string('guard_name');
             $table->timestamps();
 
             $table->unique(['name', 'guard_name']);
         });
 
-        Schema::create($tableNames['roles'], function (Blueprint $table) {
+        Schema::create($tableNames['roles'], function (Blueprint $table) use($tableNames) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('title')->nullable();
+            $table->foreignId('parent_id')->nullable()->constrained($tableNames['roles']);
             $table->string('guard_name');
             $table->timestamps();
 
