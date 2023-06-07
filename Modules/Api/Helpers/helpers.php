@@ -39,15 +39,3 @@ if (!function_exists('formatPaginationDetails')) {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
