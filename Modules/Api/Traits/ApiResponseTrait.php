@@ -63,7 +63,8 @@ trait ApiResponseTrait
         ];
 
         // Log the error message and stack trace
-        logger()->error("⚠️ $getMessage", $detail);
+        if(env('APP_DEBUG'))
+            logger()->error("⚠️ $getMessage", $detail);
 
         // Return a JSON response
         return response()->json([

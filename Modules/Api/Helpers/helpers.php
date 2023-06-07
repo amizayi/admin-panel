@@ -26,7 +26,7 @@ if (!function_exists('formatPaginationDetails')) {
 
     if (!function_exists('__response')) {
         /**
-         * Format the pagination details into an array.
+         * Get Lang Response.
          *
          * @param string $name
          * @param string $type
