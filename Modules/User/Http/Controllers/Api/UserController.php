@@ -1,14 +1,14 @@
 <?php
 
-namespace Modules\User\Http\Controllers\Api\V1;
+namespace Modules\User\Http\Controllers\Api;
 
 use Illuminate\Http\JsonResponse;
 use Modules\Api\Http\Controllers\ApiController;
 use Modules\User\Entities\User;
 use Modules\User\Fields\UserFields;
-use Modules\User\Http\Requests\Api\V1\UserRequest;
-use Modules\User\Transformers\V1\UserResource;
-use Modules\User\Transformers\V1\UserResourceCollection;
+use Modules\User\Http\Requests\Api\UserRequest;
+use Modules\User\Transformers\UserResource;
+use Modules\User\Transformers\UserResourceCollection;
 
 class UserController extends ApiController
 {

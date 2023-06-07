@@ -2,7 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
-use Modules\User\Http\Controllers\Api\V1\UserController;
+use Modules\User\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------

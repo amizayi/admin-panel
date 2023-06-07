@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\User\Http\Requests\Api\V1;
+namespace Modules\User\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Modules\User\Fields\UserFields;
