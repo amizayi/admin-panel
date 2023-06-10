@@ -20,23 +20,24 @@ class PermissionTableSeeder extends Seeder
         $enabledModules = Module::allEnabled();
 
         foreach ($enabledModules as $module) {
+            $moduleName = $module->getLowerName();
             // Get permissions for the module
-            $permissions = config("{$module->getLowerName()}.policy.permission");
+            $permissions = config("$moduleName.policy.permission");
 
             if ($permissions) {
                 // Create permissions for each module
                 foreach ($permissions as $parentName => $children) {
                     $parentPermission = Permission::create([
-                        PermissionFields::NAME => $parentName,
-                        PermissionFields::TITLE => $parentName,
+                        PermissionFields::NAME       => $parentName,
+                        PermissionFields::TITLE      => __("$moduleName::policy.permission.$parentName.parent"),
                         PermissionFields::GUARD_NAME => 'api',
                     ]);
 
                     foreach ($children as $permissionName) {
                         Permission::create([
-                            PermissionFields::NAME => "{$parentName}_{$permissionName}",
-                            PermissionFields::TITLE => "{$parentName}_{$permissionName}",
-                            PermissionFields::PARENT_ID => $parentPermission->id,
+                            PermissionFields::NAME       => "{$parentName}_{$permissionName}",
+                            PermissionFields::TITLE      => __("$moduleName::policy.permission.$parentName.$permissionName"),
+                            PermissionFields::PARENT_ID  => $parentPermission->id,
                             PermissionFields::GUARD_NAME => 'api',
                         ]);
                     }
