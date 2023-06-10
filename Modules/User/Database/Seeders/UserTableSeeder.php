@@ -16,11 +16,10 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
         // Make Super Filament
         $this->mkSuperAdmin();
         // Make Many Users
-        User::factory()->times(100)->create();
+        User::factory()->times(10)->create();
     }
 
     /**

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Modules\Permission\Fields\PermissionFields;
+use Modules\Permission\Fields\RoleFields;
 use Spatie\Permission\PermissionRegistrar;
 
 return new class extends Migration {
@@ -17,25 +19,25 @@ return new class extends Migration {
         $columnNames = config('permission.column_names');
 
         Schema::create($tableNames['permissions'], function (Blueprint $table) use($tableNames) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('title')->nullable();
-            $table->foreignId('parent_id')->nullable()->constrained($tableNames['permissions']);
-            $table->string('guard_name');
+            $table->bigIncrements(PermissionFields::ID);
+            $table->string(PermissionFields::NAME);
+            $table->string(PermissionFields::TITLE)->nullable();
+            $table->foreignId(PermissionFields::PARENT_ID)->nullable()->constrained($tableNames['permissions']);
+            $table->string(PermissionFields::GUARD_NAME);
             $table->timestamps();
 
-            $table->unique(['name', 'guard_name']);
+            $table->unique([PermissionFields::NAME, PermissionFields::GUARD_NAME]);
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) use($tableNames) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('title')->nullable();
-            $table->foreignId('parent_id')->nullable()->constrained($tableNames['roles']);
-            $table->string('guard_name');
+            $table->bigIncrements(RoleFields::ID);
+            $table->string(RoleFields::NAME);
+            $table->string(RoleFields::TITLE)->nullable();
+            $table->foreignId(RoleFields::PARENT_ID)->nullable()->constrained($tableNames['roles']);
+            $table->string(RoleFields::GUARD_NAME);
             $table->timestamps();
 
-            $table->unique(['name', 'guard_name']);
+            $table->unique([RoleFields::NAME, RoleFields::GUARD_NAME]);
         });
 
         Schema::create($tableNames['model_has_permissions'], function (Blueprint $table) use ($tableNames, $columnNames) {
