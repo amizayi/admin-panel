@@ -60,7 +60,7 @@ class ModuleServiceProvider extends ServiceProvider
         collect(
             [
                 'config' => "{$module->getPath()}/Config/config.php",
-                'permissions' => "{$module->getPath()}/Config/permissions.php",
+                'policy' => "{$module->getPath()}/Config/policy.php",
             ])
             ->filter(function ($path) {
                 return file_exists($path);
