@@ -12,11 +12,18 @@ class RoleController extends ApiController
 {
     public function index()
     {
-        $getRoles = Role::with('children')
-            ->select([RoleFields::ID, RoleFields::NAME, RoleFields::TITLE, RoleFields::PARENT_ID])
+        $roles = Role::with('children')
+            ->select([
+                RoleFields::ID,
+                RoleFields::NAME,
+                RoleFields::TITLE
+            ])
             ->whereNull(RoleFields::PARENT_ID)
             ->get();
 
-        return $this->successResponse(new RoleResourceCollection($getRoles));
+        return $this->successResponse(
+            new RoleResourceCollection($roles),
+            __response()
+        );
     }
 }
