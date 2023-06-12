@@ -27,7 +27,7 @@ trait ApiResponseTrait
             'status'  => $status,
             'message' => $message,
             'result'  => $data
-        ], Response::HTTP_UNPROCESSABLE_ENTITY);
+        ], $status);
     }
 
     /**
