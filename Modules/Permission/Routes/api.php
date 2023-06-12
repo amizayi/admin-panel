@@ -23,3 +23,9 @@ Route::prefix('/role')->controller(RoleController::class)->group(function () {
     Route::put('/update/{role}',     'update');
     Route::delete('/destroy/{role}', 'destroy');
 });
+
+Route::prefix('/permission')->controller(PermissionController::class)->group(function () {
+    Route::get('/',                  'index');
+    Route::get('/show/{permission}', 'show');
+
+});
