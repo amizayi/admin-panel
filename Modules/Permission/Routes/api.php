@@ -19,7 +19,7 @@ use Modules\Permission\Http\Controllers\Api\PermissionController;
 Route::prefix('/role')->controller(RoleController::class)->group(function () {
     Route::get('/',                  'index');
     Route::post('/store',            'store');
-    Route::get('/show/{user}',       'show');
-    Route::put('/update/{user}',     'update');
-    Route::delete('/destroy/{user}', 'destroy');
+    Route::get('/show/{role}',       'show');
+    Route::put('/update/{role}',     'update');
+    Route::delete('/destroy/{role}', 'destroy');
 });
