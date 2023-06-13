@@ -44,5 +44,10 @@ return [
         'inspector_group' => [
             'inspector'
         ]
+    ],
+    'permission_role' => [
+        'system_administrator' => ['*'],
+        'programmer'           => ['*'],
+        'regular_user'         => ['user'],
     ]
 ];

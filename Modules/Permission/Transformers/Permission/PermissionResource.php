@@ -22,7 +22,7 @@ class PermissionResource extends JsonResource
             'key'         => $this->{PermissionFields::NAME},
             'title'       => $this->{PermissionFields::TITLE},
             'parent_id'   => $this->{PermissionFields::PARENT_ID},
-            'parent_name' => $this->parent?->name,
+            'parent_name' => $this->parent?->{PermissionFields::NAME},
             'children'    => $this->children,
         ];
     }
