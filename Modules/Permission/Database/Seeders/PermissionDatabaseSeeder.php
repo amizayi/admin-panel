@@ -16,6 +16,7 @@ class PermissionDatabaseSeeder extends Seeder
          $this->call([
              PermissionTableSeeder::class,
              RoleSeederTableSeeder::class,
+             SyncPermissionToRoleTableSeeder::class,
          ]);
     }
 }
