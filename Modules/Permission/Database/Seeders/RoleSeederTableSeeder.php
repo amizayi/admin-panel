@@ -3,7 +3,6 @@
 namespace Modules\Permission\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Permission\Entities\Permission;
 use Modules\Permission\Entities\Role;
 use Modules\Permission\Fields\RoleFields;
 
@@ -30,7 +29,7 @@ class RoleSeederTableSeeder extends Seeder
                 ]);
                 // Create Children
                 foreach ($children as $roleName) {
-                    Role::create([
+                    $parentRole->children()->create([
                         RoleFields::NAME       => "{$roleName}",
                         RoleFields::TITLE      => __("permission::policy.role.$parentName.$roleName"),
                         RoleFields::PARENT_ID  => $parentRole->id,
