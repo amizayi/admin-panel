@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Modules\User\Entities\User;
+use Modules\User\Enums\UserStatus;
 use Modules\User\Fields\UserFields;
 
 class UserTableSeeder extends Seeder
@@ -40,6 +41,7 @@ class UserTableSeeder extends Seeder
             UserFields::EMAIL             => fake()->email(),
             UserFields::EMAIL_VERIFIED_AT => now(),
             UserFields::PASSWORD          => Hash::make("system_administrator"),
+            UserFields::STATUS            => UserStatus::ACTIVE
         ]);
 
         $user->assignRole('system_administrator');
@@ -63,6 +65,7 @@ class UserTableSeeder extends Seeder
             UserFields::EMAIL             => fake()->email(),
             UserFields::EMAIL_VERIFIED_AT => now(),
             UserFields::PASSWORD          => Hash::make("programmer"),
+            UserFields::STATUS            => UserStatus::ACTIVE
         ]);
 
         $user->assignRole('programmer');
@@ -84,6 +87,7 @@ class UserTableSeeder extends Seeder
             UserFields::EMAIL             => fake()->email(),
             UserFields::EMAIL_VERIFIED_AT => now(),
             UserFields::PASSWORD          => Hash::make("regular_user"),
+            UserFields::STATUS            => UserStatus::ACTIVE
         ]);
 
         $user->assignRole('regular_user');
