@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Modules\User\Enums\UserStatus;
 use Modules\User\Fields\UserFields;
 
 return new class extends Migration
@@ -24,8 +25,10 @@ return new class extends Migration
             $table->string(UserFields::EMAIL)->unique();
             $table->timestamp(UserFields::EMAIL_VERIFIED_AT)->nullable();
             $table->string(UserFields::PASSWORD);
+            $table->tinyInteger(UserFields::STATUS)->default(UserStatus::INACTIVE);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

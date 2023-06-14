@@ -19,5 +19,6 @@ class UserFields
     const EMAIL_VERIFIED_AT      = 'email_verified_at';
     const PASSWORD               = 'password';
     const PASSWORD_CONFIRMATION  = self::PASSWORD.'_confirmation';
+    const STATUS                 = 'status';
     const CREATED_AT             = 'created_at';
 }
