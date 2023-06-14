@@ -5,7 +5,9 @@ namespace Modules\User\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Modules\User\Entities\User;
+use Modules\User\Fields\UserFields;
 
 class UserTableSeeder extends Seeder
 {
@@ -16,29 +18,74 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        // Make Super Filament
-        $this->mkSuperAdmin();
-        // Make Many Users
+        // Make Real Users
+        $this->mkSystemAdministrator()
+            ->mkProgrammer()
+            ->mkRegularUser();
+        // Make Fake Users
         User::factory()->times(10)->create();
     }
 
     /**
-     * Make Super Filament
+     * Make System Administrator
      *
      * @return self
      */
-    private function mkSuperAdmin(): self
+    private function mkSystemAdministrator(): self
     {
-        User::create([
-            'username'          => "DevAmiza",
-            'first_name'        => "Amirreza",
-            'last_name'         => "Rezaei",
-            'full_name'         => "Amirreza Rezaei",
-            'email'             => "admin@admin.com",
-            'email_verified_at' => now(),
-            'password'          => Hash::make("adminadmin"),
+        $user = User::create([
+            UserFields::USERNAME          => "system_administrator",
+            UserFields::FIRST_NAME        => fake()->firstName(),
+            UserFields::LAST_NAME         => fake()->lastName(),
+            UserFields::EMAIL             => fake()->email(),
+            UserFields::EMAIL_VERIFIED_AT => now(),
+            UserFields::PASSWORD          => Hash::make("system_administrator"),
         ]);
 
+        $user->assignRole('system_administrator');
+
         return $this;
+    }
+
+
+
+    /**
+     * Make Programmer
+     *
+     * @return self
+     */
+    private function mkProgrammer(): self
+    {
+        $user = User::create([
+            UserFields::USERNAME          => "programmer",
+            UserFields::FIRST_NAME        => fake()->firstName(),
+            UserFields::LAST_NAME         => fake()->lastName(),
+            UserFields::EMAIL             => fake()->email(),
+            UserFields::EMAIL_VERIFIED_AT => now(),
+            UserFields::PASSWORD          => Hash::make("programmer"),
+        ]);
+
+        $user->assignRole('programmer');
+
+        return $this;
+    }
+
+    /**
+     * Make Regular User
+     *
+     * @return void
+     */
+    private function mkRegularUser(): void
+    {
+        $user = User::create([
+            UserFields::USERNAME          => "regular_user",
+            UserFields::FIRST_NAME        => fake()->firstName(),
+            UserFields::LAST_NAME         => fake()->lastName(),
+            UserFields::EMAIL             => fake()->email(),
+            UserFields::EMAIL_VERIFIED_AT => now(),
+            UserFields::PASSWORD          => Hash::make("regular_user"),
+        ]);
+
+        $user->assignRole('regular_user');
     }
 }

@@ -9,10 +9,18 @@ use Laravel\Sanctum\HasApiTokens;
 use Modules\User\Database\factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\User\Fields\UserFields;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable,HasRoles;
+
+    /**
+     * The name of the authentication guard used by this model.
+     *
+     * @var string
+     */
+    protected string $guard_name = 'api';
 
     /**
      * The attributes that are mass assignable.
