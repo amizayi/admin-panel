@@ -24,18 +24,19 @@ if (!function_exists('formatPaginationDetails')) {
         ];
     }
 
-    if (!function_exists('__response')) {
-        /**
-         * Get Lang Response.
-         *
-         * @param string $name
-         * @param string $type
-         * @param string $key
-         * @return string
-         */
-        function __response(string $name = "", string $type = "base", string $key = "success"): string
-        {
-            return __("api::response.$key.$type",['name' => $name]);
-        }
+}
+
+if (!function_exists('__response')) {
+    /**
+     * Get Lang Response.
+     *
+     * @param string $name
+     * @param string $type
+     * @param string $key
+     * @return string
+     */
+    function __response(string $name = "", string $type = "base", string $key = "success"): string
+    {
+        return __("api::response.$key.$type", ['name' => $name]);
     }
 }

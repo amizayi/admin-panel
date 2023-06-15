@@ -18,12 +18,12 @@ class PermissionResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'          => $this->{PermissionFields::ID},
-            'key'         => $this->{PermissionFields::NAME},
-            'title'       => $this->{PermissionFields::TITLE},
-            'parent_id'   => $this->{PermissionFields::PARENT_ID},
-            'parent_name' => $this->parent?->{PermissionFields::NAME},
-            'children'    => $this->children,
+            PermissionFields::ID          => $this->{PermissionFields::ID},
+            PermissionFields::NAME        => $this->{PermissionFields::NAME},
+            PermissionFields::TITLE       => $this->{PermissionFields::TITLE},
+            PermissionFields::PARENT_ID   => $this->{PermissionFields::PARENT_ID},
+            PermissionFields::PARENT_NAME => $this->parent?->{PermissionFields::NAME},
+            PermissionFields::CHILDREN    => $this->children,
         ];
     }
 }

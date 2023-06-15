@@ -17,13 +17,13 @@ class UserResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'         => $this->{UserFields::ID},
-            'username'   => $this->{UserFields::USERNAME},
-            'first_name' => $this->{UserFields::FIRST_NAME},
-            'last_name'  => $this->{UserFields::LAST_NAME},
-            'full_name'  => $this->{UserFields::FULL_NAME},
-            'email'      => $this->{UserFields::EMAIL},
-            'created_at' => jdate($this->{UserFields::CREATED_AT})->ago(),
+            UserFields::ID         => $this->{UserFields::ID},
+            UserFields::USERNAME   => $this->{UserFields::USERNAME},
+            UserFields::FIRST_NAME => $this->{UserFields::FIRST_NAME},
+            UserFields::LAST_NAME  => $this->{UserFields::LAST_NAME},
+            UserFields::FULL_NAME  => $this->{UserFields::FULL_NAME},
+            UserFields::EMAIL      => $this->{UserFields::EMAIL},
+            UserFields::CREATED_AT => jdate($this->{UserFields::CREATED_AT})->ago(),
         ];
     }
 }

@@ -17,13 +17,13 @@ class RoleResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'          => $this->{RoleFields::ID},
-            'key'         => $this->{RoleFields::NAME},
-            'title'       => $this->{RoleFields::TITLE},
-            'parent_id'   => $this->{RoleFields::PARENT_ID},
-            'parent_name' => $this->parent?->{RoleFields::NAME},
-            'children'    => $this->children,
-            'permissions' => $this->permissions
+            RoleFields::ID          => $this->{RoleFields::ID},
+            RoleFields::KEY         => $this->{RoleFields::NAME},
+            RoleFields::TITLE       => $this->{RoleFields::TITLE},
+            RoleFields::PARENT_ID   => $this->{RoleFields::PARENT_ID},
+            RoleFields::PARENT_NAME => $this->parent?->{RoleFields::NAME},
+            RoleFields::CHILDREN    => $this->children,
+            RoleFields::PERMISSIONS => $this->permissions
         ];
     }
 }
