@@ -18,14 +18,14 @@ class PermissionResourceCollection extends ResourceCollection
     {
         return [
             'data' => $this->collection->map(fn($parent) => [
-                'id'    => $parent->{PermissionFields::ID},
-                'key'   => $parent->{PermissionFields::NAME},
-                'title' => $parent->{PermissionFields::TITLE},
+                PermissionFields::ID    => $parent->{PermissionFields::ID},
+                PermissionFields::KEY   => $parent->{PermissionFields::NAME},
+                PermissionFields::TITLE => $parent->{PermissionFields::TITLE},
 
-                'children' => $parent->children->map(fn($permission) => [
-                    'id'    => $permission->{PermissionFields::ID},
-                    'key'   => $permission->{PermissionFields::NAME},
-                    'title' => $permission->{PermissionFields::TITLE},
+                PermissionFields::CHILDREN => $parent->children->map(fn($permission) => [
+                    PermissionFields::ID    => $permission->{PermissionFields::ID},
+                    PermissionFields::KEY   => $permission->{PermissionFields::NAME},
+                    PermissionFields::TITLE => $permission->{PermissionFields::TITLE},
                 ])
             ])
         ];
