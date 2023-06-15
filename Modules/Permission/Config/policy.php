@@ -1,18 +1,6 @@
 <?php
 
 return [
-    // List Of Permissions
-    'permission' => [
-        'role' => [
-            'index',
-            'store',
-            'update',
-            'delete'
-        ],
-        'permission' => [
-            'index'
-        ]
-    ],
     // List Of Roles
     'role' => [
         'user_group' => [
@@ -45,6 +33,19 @@ return [
             'inspector'
         ]
     ],
+    // List Of Permissions
+    'permission' => [
+        'role' => [
+            'index',
+            'store',
+            'update',
+            'delete'
+        ],
+        'permission' => [
+            'index'
+        ]
+    ],
+    // Sync Permissions To Role
     'permission_role' => [
         'system_administrator' => ['*'],
         'programmer'           => ['*'],
