@@ -4,8 +4,10 @@
     "description": "",
     "keywords": [],
     "priority": 0,
+    "files": [
+        "Helpers/helpers.php"
+    ],
     "providers": [
         "Modules\\Permission\\Providers\\PermissionServiceProvider"
-    ],
-    "files": []
+    ]
 }
