@@ -3,6 +3,8 @@
 namespace Modules\Permission\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Permission\Repositories\Contracts\PermissionRepository;
+use Modules\Permission\Repositories\Eloquent\PermissionRepositoryEloquent;
 
 class PermissionServiceProvider extends ServiceProvider
 {
@@ -23,16 +25,15 @@ class PermissionServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        $this->registerRepositories();
     }
-
     /**
-     * Register the service provider.
+     * Register module repositories.
      *
      * @return void
      */
-    public function register()
+    private function registerRepositories(): void
     {
-
+        $this->app->bind(PermissionRepository::class, PermissionRepositoryEloquent::class);
     }
 }
