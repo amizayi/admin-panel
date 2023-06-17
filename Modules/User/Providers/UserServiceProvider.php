@@ -4,6 +4,8 @@ namespace Modules\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\User\Repositories\Contracts\UserRepository;
+use Modules\User\Repositories\Eloquent\UserRepositoryEloquent;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -22,18 +24,17 @@ class UserServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-
+        $this->registerRepositories();
     }
-
     /**
-     * Register the service provider.
+     * Register module repositories.
      *
      * @return void
      */
-    public function register()
+    private function registerRepositories(): void
     {
-
+        $this->app->bind(UserRepository::class, UserRepositoryEloquent::class);
     }
 }
