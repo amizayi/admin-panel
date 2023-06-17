@@ -4,7 +4,9 @@ namespace Modules\Permission\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Permission\Repositories\Contracts\PermissionRepository;
+use Modules\Permission\Repositories\Contracts\RoleRepository;
 use Modules\Permission\Repositories\Eloquent\PermissionRepositoryEloquent;
+use Modules\Permission\Repositories\Eloquent\RoleRepositoryEloquent;
 
 class PermissionServiceProvider extends ServiceProvider
 {
@@ -23,7 +25,7 @@ class PermissionServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerRepositories();
     }
@@ -35,5 +37,6 @@ class PermissionServiceProvider extends ServiceProvider
     private function registerRepositories(): void
     {
         $this->app->bind(PermissionRepository::class, PermissionRepositoryEloquent::class);
+        $this->app->bind(RoleRepository::class,       RoleRepositoryEloquent::class);
     }
 }
