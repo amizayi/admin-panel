@@ -3,11 +3,10 @@
 namespace Modules\User\Http\Controllers\Api;
 
 use Illuminate\Http\JsonResponse;
-use Modules\Api\Http\Controllers\ApiController;
-use Modules\User\Entities\User;
 use Modules\User\Fields\UserFields;
-use Modules\User\Http\Requests\Api\UserRequest;
 use Modules\User\Transformers\UserResource;
+use Modules\Api\Http\Controllers\ApiController;
+use Modules\User\Http\Requests\Api\UserRequest;
 use Modules\User\Transformers\UserResourceCollection;
 
 class UserController extends ApiController
@@ -19,7 +18,7 @@ class UserController extends ApiController
      */
     public function index(): JsonResponse
     {
-        $data = User::paginate();
+        $data = user()->paginate();
         return $this->successResponse(new UserResourceCollection($data), __response());
     }
 
@@ -34,7 +33,7 @@ class UserController extends ApiController
         $inputs = $request->only($this->getRequestFields());
         $inputs[UserFields::PASSWORD] = bcrypt($inputs[UserFields::USERNAME]);
 
-        $newUser = User::create($inputs);
+        $newUser = user()->create($inputs);
 
         return $this->successResponse(new UserResource($newUser), __response('user','store'));
     }
@@ -42,11 +41,12 @@ class UserController extends ApiController
     /**
      * get User by id
      *
-     * @param User $user
+     * @param $id
      * @return JsonResponse
      */
-    public function show(User $user): JsonResponse
+    public function show($id): JsonResponse
     {
+        $user = user()->find($id);
         return $this->successResponse(new UserResource($user));
     }
 
@@ -54,14 +54,14 @@ class UserController extends ApiController
      * Update User
      *
      * @param UserRequest $request
-     * @param User $user
+     * @param $id
      * @return JsonResponse
      */
-    public function update(UserRequest $request, User $user): JsonResponse
+    public function update(UserRequest $request, $id): JsonResponse
     {
         $inputs = $request->only($this->getRequestFields());
 
-        $user->update($inputs);
+        $user = user()->update($inputs,$id);
 
         return $this->successResponse(new UserResource($user), __response('user','update'));
     }
@@ -69,13 +69,13 @@ class UserController extends ApiController
     /**
      * Delete User
      *
-     * @param User $user
+     * @param $id
      * @return JsonResponse
      */
-    public function destroy(User $user): JsonResponse
+    public function destroy($id): JsonResponse
     {
-        $user->delete();
-        return $this->successResponse(new UserResource($user),__response('user','destroy'));
+        $user = user()->delete($id);
+        return $this->successResponse($user,__response('user','destroy'));
     }
 
     /**
