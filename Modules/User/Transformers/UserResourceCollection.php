@@ -20,11 +20,11 @@ class UserResourceCollection extends ResourceCollection
     {
         return [
             'data' => $this->collection->map(fn($parent) => [
-                UserFields::ID         => $this->{UserFields::ID},
-                UserFields::USERNAME   => $this->{UserFields::USERNAME},
-                UserFields::FULL_NAME  => $this->{UserFields::FULL_NAME},
-                UserFields::EMAIL      => $this->{UserFields::EMAIL},
-                UserFields::CREATED_AT => $this->{UserFields::CREATED_AT},
+                UserFields::ID         => UserFields::ID,
+                UserFields::USERNAME   => UserFields::USERNAME,
+                UserFields::FULL_NAME  => UserFields::FULL_NAME,
+                UserFields::EMAIL      => UserFields::EMAIL,
+                UserFields::CREATED_AT => UserFields::CREATED_AT,
             ]),
             'pagination' => formatPaginationDetails($this->resource)
         ];
