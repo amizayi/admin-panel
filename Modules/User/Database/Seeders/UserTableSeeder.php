@@ -3,10 +3,7 @@
 namespace Modules\User\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
-use Modules\User\Entities\User;
 use Modules\User\Enums\UserStatus;
 use Modules\User\Fields\UserFields;
 
@@ -24,7 +21,7 @@ class UserTableSeeder extends Seeder
             ->mkProgrammer()
             ->mkRegularUser();
         // Make Fake Users
-        User::factory()->times(10)->create();
+        (user())->factory()->times(10)->create();
     }
 
     /**
@@ -34,7 +31,7 @@ class UserTableSeeder extends Seeder
      */
     private function mkSystemAdministrator(): self
     {
-        $user = User::create([
+        $user =user()->create([
             UserFields::USERNAME          => "system_administrator",
             UserFields::FIRST_NAME        => fake()->firstName(),
             UserFields::LAST_NAME         => fake()->lastName(),
@@ -58,7 +55,7 @@ class UserTableSeeder extends Seeder
      */
     private function mkProgrammer(): self
     {
-        $user = User::create([
+        $user = user()->create([
             UserFields::USERNAME          => "programmer",
             UserFields::FIRST_NAME        => fake()->firstName(),
             UserFields::LAST_NAME         => fake()->lastName(),
@@ -80,7 +77,7 @@ class UserTableSeeder extends Seeder
      */
     private function mkRegularUser(): void
     {
-        $user = User::create([
+        $user = user()->create([
             UserFields::USERNAME          => "regular_user",
             UserFields::FIRST_NAME        => fake()->firstName(),
             UserFields::LAST_NAME         => fake()->lastName(),
