@@ -18,7 +18,7 @@ use Modules\User\Http\Controllers\Api\UserController;
 Route::prefix('/user')->controller(UserController::class)->group(function () {
     Route::get('/',                  'index');
     Route::post('/store',            'store');
-    Route::get('/show/{user}',       'show');
-    Route::put('/update/{user}',     'update');
-    Route::delete('/destroy/{user}', 'destroy');
+    Route::get('/show/{id}',       'show');
+    Route::put('/update/{id}',     'update');
+    Route::delete('/destroy/{id}', 'destroy');
 });
