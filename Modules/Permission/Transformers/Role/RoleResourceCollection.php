@@ -19,12 +19,12 @@ class RoleResourceCollection extends ResourceCollection
         return [
             'data' => $this->collection->map(fn($parent) => [
                 RoleFields::ID    => $parent->{RoleFields::ID},
-                RoleFields::KEY  => $parent->{RoleFields::NAME},
+                RoleFields::KEY   => $parent->{RoleFields::NAME},
                 RoleFields::TITLE => $parent->{RoleFields::TITLE},
 
                 RoleFields::PERMISSIONS => $parent->children->map(fn($role) => [
                     RoleFields::ID    => $role->{RoleFields::ID},
-                    RoleFields::KEY  => $role->{RoleFields::NAME},
+                    RoleFields::KEY   => $role->{RoleFields::NAME},
                     RoleFields::TITLE => $role->{RoleFields::TITLE},
                 ])
             ])
