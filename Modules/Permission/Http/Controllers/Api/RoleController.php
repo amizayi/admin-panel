@@ -4,7 +4,6 @@ namespace Modules\Permission\Http\Controllers\Api;
 
 
 use Illuminate\Http\JsonResponse;
-use Modules\Permission\Entities\Role;
 use Modules\Permission\Fields\RoleFields;
 use Modules\Api\Http\Controllers\ApiController;
 use Modules\Permission\Http\Requests\RoleRequest;
@@ -20,7 +19,7 @@ class RoleController extends ApiController
      */
     public function index(): JsonResponse
     {
-        $roles = Role::with('children')
+        $roles = role()->with('children')
             ->select([
                 RoleFields::ID,
                 RoleFields::NAME,
@@ -42,7 +41,7 @@ class RoleController extends ApiController
     {
         $inputs = $request->only($this->getRequestFields());
         // Create a new Role
-        $role = Role::create($inputs);
+        $role = role()->create($inputs);
         // Attach the permission IDs to the newly created role
         $role->permissions()->attach($request->input('permissionIds'));
 
@@ -52,11 +51,12 @@ class RoleController extends ApiController
     /**
      * get Role by id
      *
-     * @param Role $role
+     * @param $id
      * @return JsonResponse
      */
-    public function show(Role $role): JsonResponse
+    public function show($id): JsonResponse
     {
+        $role = role()->find($id);
         return $this->successResponse(new RoleResource($role));
     }
 
@@ -64,14 +64,14 @@ class RoleController extends ApiController
      * Update Role
      *
      * @param RoleRequest $request
-     * @param Role $role
+     * @param $id
      * @return JsonResponse
      */
-    public function update(RoleRequest $request, Role $role): JsonResponse
+    public function update(RoleRequest $request, $id): JsonResponse
     {
         $inputs = $request->only($this->getRequestFields());
 
-        $role->update($inputs);
+        $role = role()->update($inputs,$id);
         // Sync the permission IDs to the role
         $role->permissions()->sync($request->input('permissionIds'));
 
@@ -82,13 +82,12 @@ class RoleController extends ApiController
     /**
      * Delete Role
      *
-     * @param  Role $role
+     * @param $id
      * @return JsonResponse
      */
-    public function destroy(Role $role): JsonResponse
+    public function destroy($id): JsonResponse
     {
-        $role->delete();
-        $role->permissions()->delete();
+        $role = role()->deleteRoleAndChildren($id);
         return $this->successResponse(new RoleResource($role),__response('role','destroy'));
     }
 

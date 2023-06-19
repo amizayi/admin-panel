@@ -28,4 +28,26 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
+    /**
+     * Delete a role and all its children including their permissions.
+     *
+     * @param int $id The ID of the role to delete.
+     * @return Role The deleted role object.
+     */
+    public function deleteRoleAndChildren(int $id): mixed
+    {
+        $role = $this->find($id);
+        $role->permissions()->count();
+
+        $role->children->map(function ($child) {
+            $child->permissions()->delete();
+            $child->delete();
+        });
+
+        $role->delete();
+        return $role;
+    }
+
+
 }
