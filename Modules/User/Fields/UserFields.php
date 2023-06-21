@@ -21,4 +21,5 @@ class UserFields
     const PASSWORD_CONFIRMATION  = self::PASSWORD.'_confirmation';
     const STATUS                 = 'status';
     const CREATED_AT             = 'created_at';
+    const ROLES                  = 'roles';
 }

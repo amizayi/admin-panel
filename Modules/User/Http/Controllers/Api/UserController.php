@@ -33,7 +33,10 @@ class UserController extends ApiController
         $inputs = $request->only($this->getRequestFields());
         $inputs[UserFields::PASSWORD] = bcrypt($inputs[UserFields::USERNAME]);
 
+        // create user
         $newUser = user()->create($inputs);
+        // assign roles to user
+        $newUser->roles()->attach($request->{UserFields::ROLES});
 
         return $this->successResponse(new UserResource($newUser), __response('user','store'));
     }
@@ -60,8 +63,10 @@ class UserController extends ApiController
     public function update(UserRequest $request, $id): JsonResponse
     {
         $inputs = $request->only($this->getRequestFields());
-
+        // update user
         $user = user()->update($inputs,$id);
+        // sync roles to user
+        $user->roles()->sync($request->{UserFields::ROLES});
 
         return $this->successResponse(new UserResource($user), __response('user','update'));
     }
