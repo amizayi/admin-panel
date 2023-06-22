@@ -2,5 +2,6 @@
     "Core": true,
     "Api": true,
     "User": true,
-    "Permission": true
+    "Permission": true,
+    "Auth": true
 }
