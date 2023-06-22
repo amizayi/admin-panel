@@ -4,7 +4,6 @@ namespace Modules\User\Transformers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Modules\Permission\Fields\RoleFields;
 use Modules\User\Fields\UserFields;
 use function formatPaginationDetails;
 
@@ -19,12 +18,12 @@ class UserResourceCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            'data' => $this->collection->map(fn($parent) => [
-                UserFields::ID         => UserFields::ID,
-                UserFields::USERNAME   => UserFields::USERNAME,
-                UserFields::FULL_NAME  => UserFields::FULL_NAME,
-                UserFields::EMAIL      => UserFields::EMAIL,
-                UserFields::CREATED_AT => UserFields::CREATED_AT,
+            'data' => $this->collection->map(fn($record) => [
+                UserFields::ID         => $record->{UserFields::ID},
+                UserFields::USERNAME   => $record->{UserFields::USERNAME},
+                UserFields::FULL_NAME  => $record->{UserFields::FULL_NAME},
+                UserFields::EMAIL      => $record->{UserFields::EMAIL},
+                UserFields::CREATED_AT => $record->{UserFields::CREATED_AT},
             ]),
             'pagination' => formatPaginationDetails($this->resource)
         ];
