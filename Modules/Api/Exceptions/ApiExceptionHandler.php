@@ -39,8 +39,8 @@ class ApiExceptionHandler extends ExceptionHandler
     {
         if ($e instanceof ValidationException)
             return $this->errorResponse(
-                $e->getMessage(),
                 $e->validator->getMessageBag()->toArray(),
+                $e->getMessage(),
                 Response::HTTP_UNPROCESSABLE_ENTITY
             );
 
