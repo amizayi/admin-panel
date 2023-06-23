@@ -7,10 +7,10 @@ return [
         'update'  => '💡 :name updated',
         'destroy' => '🗑️ :name deleted',
     ],
-    'error'   => [
+    'error' => [
         'base'    => '❌ Unsuccessful',
         'store'   => '🚫 Unable to create :name',
         'update'  => '🛑 Unable to update :name',
         'destroy' => '🚯 Unable to delete :name',
-    ],
+    ]
 ];
