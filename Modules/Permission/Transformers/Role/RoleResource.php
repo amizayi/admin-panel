@@ -5,6 +5,7 @@ namespace Modules\Permission\Transformers\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Permission\Fields\RoleFields;
+use Modules\Permission\Transformers\Permission\PermissionResourceCollection;
 
 class RoleResource extends JsonResource
 {
@@ -23,7 +24,7 @@ class RoleResource extends JsonResource
             RoleFields::PARENT_ID   => $this->{RoleFields::PARENT_ID},
             RoleFields::PARENT_NAME => $this->parent?->{RoleFields::NAME},
             RoleFields::CHILDREN    => $this->children,
-            RoleFields::PERMISSIONS => $this->permissions
+            RoleFields::PERMISSIONS => new PermissionResourceCollection($this->permissions)
         ];
     }
 }
