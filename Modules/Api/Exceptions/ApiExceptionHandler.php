@@ -3,6 +3,7 @@
 namespace Modules\Api\Exceptions;
 
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\RedirectResponse;
@@ -33,9 +34,9 @@ class ApiExceptionHandler extends ExceptionHandler
      *
      * @param  Request  $request
      * @param  Exception|Throwable $e
-     * @return RedirectResponse|JsonResponse
+     * @return JsonResponse
      */
-    public function render($request, Exception|Throwable $e): RedirectResponse|JsonResponse
+    public function render($request, Exception|Throwable $e): JsonResponse
     {
         if ($e instanceof ValidationException)
             return $this->errorResponse(

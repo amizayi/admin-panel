@@ -27,7 +27,7 @@ class AuthController extends ApiController
             return $this->matchError();
 
         // Authentication was successful, set Sanctum token
-        $user  = Auth::user();
+        $user  = auth()->user();
         $token = $this->generateToken($user);
         $role  = $user->roles()->with('permissions')->first();
 
@@ -37,5 +37,16 @@ class AuthController extends ApiController
             'role'  => new RoleResource($role)
 
         ], __('auth::response.login'));
+    }
+
+    /**
+     * Revokes all the authenticated user's Sanctum tokens and logs them out.
+     *
+     * @return JsonResponse
+     */
+    public function logout(): JsonResponse
+    {
+        auth()->user()->tokens()->delete();
+        return $this->successResponse(null, __('auth::response.logout'));
     }
 }
