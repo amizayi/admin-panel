@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Modules\Api\Http\Controllers\ApiController;
 use Modules\Auth\Http\Requests\Api\LoginRequest;
 use Modules\Auth\Traits\AuthTrait;
-use Modules\Permission\Transformers\Role\RoleResource;
-use Modules\User\Transformers\UserResource;
+use Modules\Auth\Transformers\AuthResource;
 
 class AuthController extends ApiController
 {
@@ -29,14 +28,8 @@ class AuthController extends ApiController
         // Authentication was successful, set Sanctum token
         $user  = auth()->user();
         $token = $this->generateToken($user);
-        $role  = $user->roles()->with('permissions')->first();
 
-        return $this->successResponse([
-            'token' => $token,
-            'user'  => new UserResource($user),
-            'role'  => new RoleResource($role)
-
-        ], __('auth::response.login'));
+        return $this->successResponse(new AuthResource($user,$token), __('auth::response.login'));
     }
 
     /**
