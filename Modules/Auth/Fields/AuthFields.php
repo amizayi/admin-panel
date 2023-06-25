@@ -9,10 +9,12 @@ namespace Modules\Auth\Fields;
 
 class AuthFields
 {
+    const USER     = 'user';
     const USERID   = 'user_id';
     const USERNAME = 'username';
     const PASSWORD = 'password';
     const MOBILE   = 'mobile';
     const EMAIL    = 'email';
     const TOKEN    = 'token';
+    const ROLE     = 'role';
 }
