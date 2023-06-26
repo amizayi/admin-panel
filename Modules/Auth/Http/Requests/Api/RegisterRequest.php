@@ -5,7 +5,7 @@ namespace Modules\Auth\Http\Requests\Api;
 use Illuminate\Foundation\Http\FormRequest;
 use Modules\Auth\Fields\AuthFields;
 
-class LoginRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,9 +15,9 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            AuthFields::USERNAME => 'required|exists:users,'.AuthFields::USERNAME,
-            AuthFields::PASSWORD => 'required',
-            AuthFields::REMEMBER => 'boolean',
+            AuthFields::USERNAME => 'required|unique:users,'.AuthFields::USERNAME,
+            AuthFields::PASSWORD => 'required|confirmed',
+            AuthFields::EMAIL    => 'required|unique:users,'.AuthFields::EMAIL
         ];
     }
 }

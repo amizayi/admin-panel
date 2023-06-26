@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'register_success'=> '✅ Registration successful. Welcome!',
+    'register_failed' => '❌ Failed to register. Please try again later.',
     'login'           => '🔐 Login successful',
     'logout'          => '👋 Logout successful',
     'unauthorized'    => '🚫 Unauthorized access',

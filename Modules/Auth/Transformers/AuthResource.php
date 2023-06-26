@@ -27,9 +27,9 @@ class AuthResource extends JsonResource
      *
      *  Create a new AuthResource instance.
      * @param mixed $user
-     * @param string $token
+     * @param string|null $token
      */
-    public function __construct(mixed $user, string $token)
+    public function __construct(mixed $user, string $token = null)
     {
         parent::__construct($user);
         $this->user  = $user;
