@@ -4,7 +4,6 @@ namespace Modules\Auth\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Modules\Auth\Fields\AuthFields;
-use Modules\User\Fields\UserFields;
 
 class LoginRequest extends FormRequest
 {
@@ -16,8 +15,9 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            AuthFields::USERNAME => 'required|exists:users,'.UserFields::USERNAME,
+            AuthFields::USERNAME => 'required|exists:users,'.AuthFields::USERNAME,
             AuthFields::PASSWORD => 'required',
+            AuthFields::REMEMBER => 'boolean',
         ];
     }
 }
