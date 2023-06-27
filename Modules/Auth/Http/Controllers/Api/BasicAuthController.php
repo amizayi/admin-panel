@@ -12,7 +12,7 @@ use Modules\Auth\Traits\AuthTrait;
 use Modules\Auth\Transformers\AuthResource;
 use Modules\Auth\Fields\AuthFields;
 
-class AuthController extends ApiController
+class BasicAuthController extends ApiController
 {
     use AuthTrait;
 
