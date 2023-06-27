@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Auth\Http\Controllers\Api\AuthController;
+use Modules\Auth\Http\Controllers\Api\BasicAuthController;
+use Modules\Auth\Http\Controllers\Api\OtpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,17 @@ use Modules\Auth\Http\Controllers\Api\AuthController;
 |
 */
 
-Route::prefix('auth')->controller(AuthController::class)->group(function () {
-    Route::post('login',       'login');
-    Route::post('register', 'register');
-    Route::post('logout',     'logout')->middleware('auth:sanctum');
+Route::prefix('auth')->group(function () {
+    // basic
+    Route::prefix('base')->controller(BasicAuthController::class)->group(function () {
+        Route::post('login',       'login');
+        Route::post('register', 'register');
+        Route::post('logout',     'logout')->middleware('auth:sanctum');
+    });
+    // OTP
+    Route::prefix('otp')->controller(OtpController::class)->group(function () {
+        Route::post('send',       'send');
+        Route::post('confirm', 'confirm');
+    });
 });
+
