@@ -12,7 +12,7 @@ class OtpGenerator
      *
      * @var int
      */
-    private int $otp_length      = 4;
+    private int $otp_length = 4;
 
     /**
      * The expiration time (in seconds) for the OTP.
@@ -58,9 +58,8 @@ class OtpGenerator
     {
         $code = '';
 
-        for ($i = 0; $i < $this->otp_length; $i++) {
+        for ($i = 0; $i < $this->otp_length; $i++)
             $code .= rand(0, 9);
-        }
 
         return $code;
     }
