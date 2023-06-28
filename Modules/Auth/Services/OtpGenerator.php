@@ -2,8 +2,8 @@
 
 namespace Modules\Auth\Services;
 
-use Modules\Auth\Fields\OtpFields;
 use Illuminate\Support\Facades\Cache;
+use Modules\Auth\Fields\OtpFields;
 
 class OtpGenerator
 {
@@ -21,33 +21,25 @@ class OtpGenerator
      */
     private int $otp_expire_time = 120;
 
-
     /**
-     * Sends a verification code to the user using either email or mobile number.
-     * @param array $inputs The inputs containing the email and mobile number.
-     * @return bool Returns true if the verification code is successfully sent, false otherwise.
+     * Send an OTP code to the specified mobile number or email address.
+     *
+     * @param string|null $mobile The mobile number to send the OTP code to (optional).
+     * @param string|null $email The email address to send the OTP code to (optional).
+     * @return bool Returns true if the OTP code was successfully sent and stored in cache, false otherwise.
      */
-    public function sendCode(array $inputs): bool
+    public function sendCode(?string $mobile, ?string $email): bool
     {
-        $reqValue = $inputs[OtpFields::EMAIL] ?? $inputs[OtpFields::MOBILE];
+        $recipient = $mobile ?? $email;
         // Generate a new OTP code
         $otp = $this->generateCode();
         // send code
-        $result = match (key($inputs)) {
-            OtpFields::MOBILE => $this->sendSMS($reqValue,   $otp),
-            OtpFields::EMAIL  => $this->sendEmail($reqValue, $otp),
-        };
+        $result = $mobile ? $this->sendSMS($mobile, $otp) : $this->sendEmail($email, $otp);
+        // The expiration time
+        $expiration = now()->addSecond($this->otp_expire_time);
         // Store OTP in cache
-        if($result)
-            return Cache::put(
-                "OTP:$reqValue",
-                $otp,
-                now()->addSecond($this->otp_expire_time)
-            );
-        else
-            return false;
+        return $result && Cache::put("OTP:$recipient", $otp, $expiration);
     }
-
 
     /**
      * Generates a random OTP (One-Time Password) consisting of digits.
@@ -64,12 +56,26 @@ class OtpGenerator
         return $code;
     }
 
+    /**
+     * Sends an OTP code via email.
+     *
+     * @param mixed $email The email address to send the OTP code to.
+     * @param string $otp The OTP code to be sent.
+     * @return bool Returns true if the email was successfully sent, false otherwise.
+     */
     private function sendEmail(mixed $email, string $otp): bool
     {
         return true;
     }
 
-    private function sendSMS(mixed $mobile, string $otp): bool
+    /**
+     * Sends an OTP code via SMS.
+     *
+     * @param string $mobile The mobile number to send the OTP code to.
+     * @param string $otp The OTP code to be sent.
+     * @return bool Returns true if the SMS was successfully sent, false otherwise.
+     */
+    private function sendSMS(string $mobile, string $otp): bool
     {
         return true;
     }
