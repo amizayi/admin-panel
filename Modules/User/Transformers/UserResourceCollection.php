@@ -23,6 +23,7 @@ class UserResourceCollection extends ResourceCollection
                 UserFields::USERNAME   => $record->{UserFields::USERNAME},
                 UserFields::FULL_NAME  => $record->{UserFields::FULL_NAME},
                 UserFields::EMAIL      => $record->{UserFields::EMAIL},
+                UserFields::MOBILE     => $record->{UserFields::MOBILE},
                 UserFields::CREATED_AT => $record->{UserFields::CREATED_AT},
             ]),
             'pagination' => formatPaginationDetails($this->resource)

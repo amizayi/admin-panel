@@ -36,6 +36,7 @@ class UserTableSeeder extends Seeder
             UserFields::FIRST_NAME        => fake()->firstName(),
             UserFields::LAST_NAME         => fake()->lastName(),
             UserFields::EMAIL             => fake()->email(),
+            UserFields::MOBILE            => fake()->phoneNumber(),
             UserFields::EMAIL_VERIFIED_AT => now(),
             UserFields::PASSWORD          => Hash::make("system_administrator"),
             UserFields::STATUS            => UserStatus::ACTIVE
@@ -60,6 +61,7 @@ class UserTableSeeder extends Seeder
             UserFields::FIRST_NAME        => fake()->firstName(),
             UserFields::LAST_NAME         => fake()->lastName(),
             UserFields::EMAIL             => fake()->email(),
+            UserFields::MOBILE            => fake()->phoneNumber(),
             UserFields::EMAIL_VERIFIED_AT => now(),
             UserFields::PASSWORD          => Hash::make("programmer"),
             UserFields::STATUS            => UserStatus::ACTIVE
@@ -82,6 +84,7 @@ class UserTableSeeder extends Seeder
             UserFields::FIRST_NAME        => fake()->firstName(),
             UserFields::LAST_NAME         => fake()->lastName(),
             UserFields::EMAIL             => fake()->email(),
+            UserFields::MOBILE            => fake()->phoneNumber(),
             UserFields::EMAIL_VERIFIED_AT => now(),
             UserFields::PASSWORD          => Hash::make("regular_user"),
             UserFields::STATUS            => UserStatus::ACTIVE

@@ -16,6 +16,7 @@ class UserFields
     const LAST_NAME              = 'last_name';
     const FULL_NAME              = 'full_name';
     const EMAIL                  = 'email';
+    const MOBILE                 = 'mobile';
     const EMAIL_VERIFIED_AT      = 'email_verified_at';
     const PASSWORD               = 'password';
     const PASSWORD_CONFIRMATION  = self::PASSWORD.'_confirmation';

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string(UserFields::FIRST_NAME)->nullable();
             $table->string(UserFields::LAST_NAME)->nullable();
             $table->string(UserFields::FULL_NAME)->nullable();
+            $table->string(UserFields::MOBILE)->unique();
             $table->string(UserFields::EMAIL)->unique();
             $table->timestamp(UserFields::EMAIL_VERIFIED_AT)->nullable();
             $table->string(UserFields::PASSWORD);

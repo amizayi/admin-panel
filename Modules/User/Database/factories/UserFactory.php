@@ -5,6 +5,7 @@ namespace Modules\User\Database\factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Entities\User;
+use Modules\User\Fields\UserFields;
 
 class UserFactory extends Factory
 {
@@ -20,17 +21,18 @@ class UserFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         $username = $this->faker->userName;
 
         return [
-            'username'          => $username,
-            'first_name'        => $this->faker->firstName,
-            'last_name'         => $this->faker->lastName,
-            'email'             => $this->faker->unique()->safeEmail,
-            'email_verified_at' => now(),
-            'password'          => Hash::make($username),
+            UserFields::USERNAME          => $this->faker->username,
+            UserFields::FIRST_NAME        => $this->faker->firstName,
+            UserFields::LAST_NAME         => $this->faker->lastName,
+            UserFields::EMAIL             => $this->faker->unique()->safeEmail,
+            UserFields::MOBILE            => $this->faker->unique()->phoneNumber,
+            UserFields::EMAIL_VERIFIED_AT => now(),
+            UserFields::PASSWORD          => Hash::make($username),
         ];
     }
 }

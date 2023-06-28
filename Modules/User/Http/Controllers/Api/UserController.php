@@ -93,6 +93,7 @@ class UserController extends ApiController
         return [
             UserFields::USERNAME,
             UserFields::EMAIL,
+            UserFields::MOBILE,
             UserFields::FIRST_NAME,
             UserFields::LAST_NAME,
         ];
