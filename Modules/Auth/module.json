@@ -7,5 +7,7 @@
     "providers": [
         "Modules\\Auth\\Providers\\AuthServiceProvider"
     ],
-    "files": []
+    "files": [
+        "Helpers/helpers.php"
+    ]
 }

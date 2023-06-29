@@ -3,7 +3,6 @@
 namespace Modules\Auth\Services;
 
 use Illuminate\Support\Facades\Cache;
-use Modules\Auth\Fields\OtpFields;
 
 class OtpGenerator
 {
@@ -24,9 +23,9 @@ class OtpGenerator
     /**
      * Send an OTP code to the specified mobile number or email address.
      *
-     * @param string|null $mobile The mobile number to send the OTP code to (optional).
-     * @param string|null $email The email address to send the OTP code to (optional).
-     * @return bool Returns true if the OTP code was successfully sent and stored in cache, false otherwise.
+     * @param string|null $mobile
+     * @param string|null $email
+     * @return bool
      */
     public function sendCode(?string $mobile, ?string $email): bool
     {
@@ -38,7 +37,21 @@ class OtpGenerator
         // The expiration time
         $expiration = now()->addSecond($this->otp_expire_time);
         // Store OTP in cache
-        return $result && Cache::put("OTP:$recipient", $otp, $expiration);
+        return $result && Cache::put(cacheOtpKey($recipient), $otp, $expiration);
+    }
+
+    /**
+     * Verify the given code for the recipient.
+     *
+     * @param string $recipient
+     * @param string $code
+     * @return bool
+     */
+    public function verify(string $recipient, string $code): bool
+    {
+        $cacheKey = cacheOtpKey($recipient);
+
+        return Cache::get($cacheKey) == $code && Cache::forget($cacheKey);
     }
 
     /**
