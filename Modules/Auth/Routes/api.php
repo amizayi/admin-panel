@@ -16,7 +16,7 @@ use Modules\Auth\Http\Controllers\Api\OtpController;
 */
 
 Route::prefix('auth')->group(function () {
-    // basic
+    // Basic
     Route::prefix('base')->controller(BasicAuthController::class)->group(function () {
         Route::post('login',       'login');
         Route::post('register', 'register');
@@ -24,8 +24,8 @@ Route::prefix('auth')->group(function () {
     });
     // OTP
     Route::prefix('otp')->controller(OtpController::class)->group(function () {
-        Route::post('send',       'send');
-        Route::post('confirm', 'confirm');
+        Route::post('send',     'send');
+        Route::post('verify', 'verify');
     });
 });
 
