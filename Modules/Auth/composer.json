@@ -15,6 +15,9 @@
             }
         }
     },
+    "require": {
+        "laravel/socialite": "^5.6"
+    },
     "autoload": {
         "psr-4": {
             "Modules\\Auth\\": ""

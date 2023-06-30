@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Modules\Auth\Http\Controllers\Api\OAuth\GithubAuthController;
 use Modules\Auth\Http\Controllers\Api\BasicAuthController;
 use Modules\Auth\Http\Controllers\Api\OtpController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,19 @@ Route::prefix('auth')->group(function () {
     Route::prefix('otp')->controller(OtpController::class)->group(function () {
         Route::post('send',     'send');
         Route::post('verify', 'verify');
+    });
+    // OAuth
+    Route::prefix('oauth')->group(function () {
+        // Github
+        Route::prefix('github')->controller(GithubAuthController::class)->group(function () {
+            Route::get('redirect',  'redirect');
+            Route::get('callback', 'callback');
+        });
+        // Google
+//        Route::prefix('google')->controller(GoogleAuthController::class)->group(function () {
+//            Route::get('redirect',  'redirect');
+//            Route::post('callback', 'callback');
+//        });
     });
 });
 
