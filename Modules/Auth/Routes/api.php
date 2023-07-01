@@ -2,6 +2,7 @@
 
 use Modules\Auth\Http\Controllers\Api\OAuth\GithubAuthController;
 use Modules\Auth\Http\Controllers\Api\BasicAuthController;
+use Modules\Auth\Http\Controllers\Api\OAuth\GoogleAuthController;
 use Modules\Auth\Http\Controllers\Api\OtpController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,14 +33,14 @@ Route::prefix('auth')->group(function () {
     Route::prefix('oauth')->group(function () {
         // Github
         Route::prefix('github')->controller(GithubAuthController::class)->group(function () {
-            Route::get('redirect',  'redirect');
+            Route::get('redirect', 'redirect');
             Route::get('callback', 'callback');
         });
         // Google
-//        Route::prefix('google')->controller(GoogleAuthController::class)->group(function () {
-//            Route::get('redirect',  'redirect');
-//            Route::post('callback', 'callback');
-//        });
+        Route::prefix('google')->controller(GoogleAuthController::class)->group(function () {
+            Route::get('redirect', 'redirect');
+            Route::get('callback', 'callback');
+        });
     });
 });
 
