@@ -20,7 +20,7 @@ class GithubAuthController extends ApiController
     {
         try {
             $response = Socialite::driver('github')->stateless()->user();
-            $userData = collect($response->attributes);
+            $userData = collect($response);
             // TODO: check user and login
             return $this->successResponse($userData);
         } catch (ClientException $exception) {

@@ -3,5 +3,6 @@
     "Api": true,
     "User": true,
     "Permission": true,
-    "Auth": true
+    "Auth": true,
+    "File": true
 }

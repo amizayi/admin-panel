@@ -1,0 +1,11 @@
+{
+    "name": "File",
+    "alias": "file",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\File\\Providers\\FileServiceProvider"
+    ],
+    "files": []
+}
