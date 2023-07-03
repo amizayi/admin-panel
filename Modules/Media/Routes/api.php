@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/file', function (Request $request) {
+Route::middleware('auth:api')->get('/media', function (Request $request) {
     return $request->user();
 });

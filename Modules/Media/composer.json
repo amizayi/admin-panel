@@ -1,5 +1,5 @@
 {
-    "name": "DevAmiza/file",
+    "name": "DevAmiza/media",
     "description": "",
     "authors": [
         {
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\File\\": ""
+            "Modules\\Media\\": ""
         }
     }
 }
