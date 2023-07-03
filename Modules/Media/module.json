@@ -7,5 +7,7 @@
     "providers": [
         "Modules\\Media\\Providers\\MediaServiceProvider"
     ],
-    "files": []
+    "files": [
+        "Helpers/helpers.php"
+    ]
 }
