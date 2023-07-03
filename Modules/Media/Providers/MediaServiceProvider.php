@@ -1,21 +1,21 @@
 <?php
 
-namespace Modules\File\Providers;
+namespace Modules\Media\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
-class FileServiceProvider extends ServiceProvider
+class MediaServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'File';
+    protected $moduleName = 'Media';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'file';
+    protected $moduleNameLower = 'media';
 
     /**
      * Boot the application events.

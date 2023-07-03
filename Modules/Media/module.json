@@ -1,11 +1,11 @@
 {
-    "name": "File",
-    "alias": "file",
+    "name": "Media",
+    "alias": "media",
     "description": "",
     "keywords": [],
     "priority": 0,
     "providers": [
-        "Modules\\File\\Providers\\FileServiceProvider"
+        "Modules\\Media\\Providers\\MediaServiceProvider"
     ],
     "files": []
 }

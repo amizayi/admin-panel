@@ -4,5 +4,5 @@
     "User": true,
     "Permission": true,
     "Auth": true,
-    "File": true
+    "Media": true
 }
