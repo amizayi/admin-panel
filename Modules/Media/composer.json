@@ -1,6 +1,9 @@
 {
     "name": "DevAmiza/media",
     "description": "",
+    "require": {
+        "intervention/image": "^2.7"
+    },
     "authors": [
         {
             "name": "Amirreza Rezaei",
