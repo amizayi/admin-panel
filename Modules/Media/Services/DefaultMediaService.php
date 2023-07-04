@@ -4,45 +4,53 @@ namespace Modules\Media\Services;
 
 use Carbon\Carbon;
 use Illuminate\Http\UploadedFile;
+use Modules\Media\Fields\MediaFields;
 
 class DefaultMediaService
 {
     /**
+     * @var array $allowedImageExtensions The array of allowed image file extensions.
+     */
+    public array $allowedImageExtensions  = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
+
+    /**
      * Generate a full path file with the current date and time.
      *
+     * @param string $extension
      * @return string
      */
-    public function generateFullPath(): string
+    public function generateName(string $extension = 'jpg'): string
     {
         $dateTime = Carbon::now();
-        $dirPath  = $dateTime->format('Y/m/d/H');;
         $fileName = $dateTime->format('YmdHisu');
 
-        return sprintf('%s/%s.jpg', $dirPath, $fileName);
+        return sprintf("%s.$extension", $fileName);
     }
 
     /**
      * Get details of the uploaded file.
      *
      * @param UploadedFile $file
+     * @param string|null $disk
      * @return array
      */
-    public function fileDetails(UploadedFile $file): array
+    public function fileDetails(UploadedFile $file,?string $disk): array
     {
-        $generatePath = $this->generateFullPath();
+        $extension    = $file->getClientOriginalExtension();
+        $fileName     = $this->generateName($extension);
         $originalName = $file->getClientOriginalName();
         $mimeType     = $file->getMimeType();
-        $extension    = $file->getClientOriginalExtension();
         $size         = $file->getSize();
         $creatorId    = auth()->user()->id ?? null;
 
         return [
-            'file_name'     => getFileNameFromPath($generatePath), // get fileName from helper
-            'original_name' => $originalName,
-            'extension'     => $extension,
-            'mimetype'      => $mimeType,
-            'size'          => $size,
-            'creator_id'    => $creatorId,
+            MediaFields::FILE_NAME     => $fileName,
+            MediaFields::ORIGINAL_NAME => $originalName,
+            MediaFields::EXTENSION     => $extension,
+            MediaFields::MIMETYPE      => $mimeType,
+            MediaFields::SIZE          => $size,
+            MediaFields::DISK          => $disk,
+            MediaFields::CREATOR_ID    => $creatorId,
         ];
     }
 }
