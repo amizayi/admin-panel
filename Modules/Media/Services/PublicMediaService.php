@@ -5,6 +5,7 @@ namespace Modules\Media\Services;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Modules\Media\Fields\DiskFields;
 use Modules\Media\Fields\MediaFields;
 
@@ -16,6 +17,26 @@ class PublicMediaService extends DefaultMediaService
      * @var string
      */
     private string $disk = DiskFields::PUBLIC;
+    /**
+     * The maximum width for the resized image.
+     *
+     * @var int
+     */
+    private int $maxWidth = 1200;
+
+    /**
+     * The maximum height for the resized image.
+     *
+     * @var int
+     */
+    private int $maxHeight = 800;
+
+    /**
+     * The compression quality for the image.
+     *
+     * @var int
+     */
+    private int $compressionQuality = 80;
 
     /**
      * Save a single file.
@@ -25,8 +46,8 @@ class PublicMediaService extends DefaultMediaService
      */
     public function saveFile(UploadedFile $file): array
     {
-        $details   = $this->fileDetails($file, $this->disk);
-        $fileName  = $details[MediaFields::FILE_NAME];
+        $details = $this->fileDetails($file, $this->disk);
+        $fileName = $details[MediaFields::FILE_NAME];
         $storePath = convertToFormattedPath($fileName);
 
         $this->storeFile($file, $storePath, $fileName);
@@ -45,8 +66,8 @@ class PublicMediaService extends DefaultMediaService
         $fileDetails = [];
 
         foreach ($files as $file) {
-            $details   = $this->fileDetails($file, $this->disk);
-            $fileName  = $details[MediaFields::FILE_NAME];
+            $details = $this->fileDetails($file, $this->disk);
+            $fileName = $details[MediaFields::FILE_NAME];
             $storePath = convertToFormattedPath($fileName);
 
             $this->storeFile($file, $storePath, $fileName);
@@ -67,6 +88,23 @@ class PublicMediaService extends DefaultMediaService
      */
     protected function storeFile(UploadedFile $file, string $storePath, string $fileName): void
     {
-        Storage::disk($this->disk)->putFileAs($storePath, $file, $fileName);
+        if (in_array($file->getClientOriginalExtension(), $this->allowedImageExtensions)) {
+            $image = Image::make($file);
+
+            // Resize the image if needed
+            if ($image->width() > $this->maxWidth || $image->height() > $this->maxHeight) {
+                $image->resize($this->maxWidth, $this->maxHeight, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+            }
+
+            // Compress the image
+            $image->encode($file->getClientOriginalExtension(), $this->compressionQuality);
+
+            Storage::disk($this->disk)->put($storePath . $fileName, (string)$image);
+        } else {
+            Storage::disk($this->disk)->putFileAs($storePath, $file, $fileName);
+        }
     }
 }
