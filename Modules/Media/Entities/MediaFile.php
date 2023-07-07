@@ -10,5 +10,12 @@ class MediaFile extends Model
 {
     use SoftDeletes;
 
+    protected $table = 'media_files';
+
     protected $guarded = [MediaFields::ID];
+
+    public function mediable()
+    {
+        return $this->morphTo();
+    }
 }

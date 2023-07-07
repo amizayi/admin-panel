@@ -2,14 +2,13 @@
 
 namespace Modules\Media\Services;
 
-
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Modules\Media\Fields\MediaFields;
 use Intervention\Image\Facades\Image;
 use Modules\Media\Fields\DiskFields;
-use Modules\Media\Fields\MediaFields;
+use Illuminate\Http\UploadedFile;
 
-class PublicMediaService extends DefaultMediaService
+class PublicMediaService extends BaseMediaService
 {
     /**
      * The disk to use for saving files.
@@ -17,26 +16,6 @@ class PublicMediaService extends DefaultMediaService
      * @var string
      */
     private string $disk = DiskFields::PUBLIC;
-    /**
-     * The maximum width for the resized image.
-     *
-     * @var int
-     */
-    private int $maxWidth = 1200;
-
-    /**
-     * The maximum height for the resized image.
-     *
-     * @var int
-     */
-    private int $maxHeight = 800;
-
-    /**
-     * The compression quality for the image.
-     *
-     * @var int
-     */
-    private int $compressionQuality = 80;
 
     /**
      * Save a single file.
@@ -46,8 +25,8 @@ class PublicMediaService extends DefaultMediaService
      */
     public function saveFile(UploadedFile $file): array
     {
-        $details = $this->fileDetails($file, $this->disk);
-        $fileName = $details[MediaFields::FILE_NAME];
+        $details   = $this->fileDetails($file, $this->disk);
+        $fileName  = $details[MediaFields::FILE_NAME];
         $storePath = convertToFormattedPath($fileName);
 
         $this->storeFile($file, $storePath, $fileName);
@@ -66,8 +45,8 @@ class PublicMediaService extends DefaultMediaService
         $fileDetails = [];
 
         foreach ($files as $file) {
-            $details = $this->fileDetails($file, $this->disk);
-            $fileName = $details[MediaFields::FILE_NAME];
+            $details   = $this->fileDetails($file, $this->disk);
+            $fileName  = $details[MediaFields::FILE_NAME];
             $storePath = convertToFormattedPath($fileName);
 
             $this->storeFile($file, $storePath, $fileName);

@@ -12,5 +12,5 @@ class MediaFields
     const SIZE          = 'size';
     const DISK          = 'disk';
     const CREATOR_ID    = 'creator_id';
-    const MORPH         = 'model';
+    const MORPH         = 'media';
 }
