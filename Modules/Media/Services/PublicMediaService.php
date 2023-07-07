@@ -8,7 +8,7 @@ use Intervention\Image\Facades\Image;
 use Modules\Media\Fields\DiskFields;
 use Illuminate\Http\UploadedFile;
 
-class PublicMediaService extends DefaultMediaService
+class PublicMediaService extends BaseMediaService
 {
     /**
      * The disk to use for saving files.
@@ -16,26 +16,6 @@ class PublicMediaService extends DefaultMediaService
      * @var string
      */
     private string $disk = DiskFields::PUBLIC;
-    /**
-     * The maximum width for the resized image.
-     *
-     * @var int
-     */
-    private int $maxWidth = 1200;
-
-    /**
-     * The maximum height for the resized image.
-     *
-     * @var int
-     */
-    private int $maxHeight = 800;
-
-    /**
-     * The compression quality for the image.
-     *
-     * @var int
-     */
-    private int $compressionQuality = 80;
 
     /**
      * Save a single file.

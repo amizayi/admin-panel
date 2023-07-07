@@ -6,12 +6,33 @@ use Carbon\Carbon;
 use Illuminate\Http\UploadedFile;
 use Modules\Media\Fields\MediaFields;
 
-class DefaultMediaService
+class BaseMediaService
 {
     /**
      * @var array $allowedImageExtensions The array of allowed image file extensions.
      */
     public array $allowedImageExtensions  = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
+
+    /**
+     * The maximum width for the resized image.
+     *
+     * @var int
+     */
+    private int $maxWidth = 1200;
+
+    /**
+     * The maximum height for the resized image.
+     *
+     * @var int
+     */
+    private int $maxHeight = 800;
+
+    /**
+     * The compression quality for the image.
+     *
+     * @var int
+     */
+    private int $compressionQuality = 80;
 
     /**
      * Generate a full path file with the current date and time.
