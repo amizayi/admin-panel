@@ -18,21 +18,21 @@ class BaseMediaService
      *
      * @var int
      */
-    private int $maxWidth = 1200;
+    public int $maxWidth = 1200;
 
     /**
      * The maximum height for the resized image.
      *
      * @var int
      */
-    private int $maxHeight = 800;
+    public int $maxHeight = 800;
 
     /**
      * The compression quality for the image.
      *
      * @var int
      */
-    private int $compressionQuality = 80;
+    public int $compressionQuality = 80;
 
     /**
      * Generate a full path file with the current date and time.
