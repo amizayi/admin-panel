@@ -2,12 +2,11 @@
 
 namespace Modules\Media\Services;
 
-
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Modules\Media\Fields\MediaFields;
 use Intervention\Image\Facades\Image;
 use Modules\Media\Fields\DiskFields;
-use Modules\Media\Fields\MediaFields;
+use Illuminate\Http\UploadedFile;
 
 class PublicMediaService extends DefaultMediaService
 {
@@ -46,8 +45,8 @@ class PublicMediaService extends DefaultMediaService
      */
     public function saveFile(UploadedFile $file): array
     {
-        $details = $this->fileDetails($file, $this->disk);
-        $fileName = $details[MediaFields::FILE_NAME];
+        $details   = $this->fileDetails($file, $this->disk);
+        $fileName  = $details[MediaFields::FILE_NAME];
         $storePath = convertToFormattedPath($fileName);
 
         $this->storeFile($file, $storePath, $fileName);
@@ -66,8 +65,8 @@ class PublicMediaService extends DefaultMediaService
         $fileDetails = [];
 
         foreach ($files as $file) {
-            $details = $this->fileDetails($file, $this->disk);
-            $fileName = $details[MediaFields::FILE_NAME];
+            $details   = $this->fileDetails($file, $this->disk);
+            $fileName  = $details[MediaFields::FILE_NAME];
             $storePath = convertToFormattedPath($fileName);
 
             $this->storeFile($file, $storePath, $fileName);
