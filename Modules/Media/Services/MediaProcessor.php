@@ -18,6 +18,7 @@ class MediaProcessor
     {
         return match ($disk) {
             DiskFields::PUBLIC => (new PublicMediaService())->saveFile($file),
+            DiskFields::FTP => (new FTPMediaService())->saveFile($file),
         };
     }
 
@@ -32,6 +33,7 @@ class MediaProcessor
     {
         return match ($disk) {
             DiskFields::PUBLIC => (new PublicMediaService())->saveFiles($files),
+            DiskFields::FTP => (new FTPMediaService())->saveFiles($files),
         };
     }
 }
