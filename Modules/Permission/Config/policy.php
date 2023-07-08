@@ -46,9 +46,9 @@ return [
         ]
     ],
     // Sync Permissions To Role
-    'permission_role' => [
+    'role_permission' => [
         'system_administrator' => ['*'],
         'programmer'           => ['*'],
-        'regular_user'         => ['user'],
+        'team_manager'         => ['user']
     ]
 ];

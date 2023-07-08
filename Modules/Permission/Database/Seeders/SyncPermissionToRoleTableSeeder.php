@@ -15,7 +15,7 @@ class SyncPermissionToRoleTableSeeder extends Seeder
 
     public function __construct()
     {
-        $this->rolePermission = config('permission.policy.permission_role');
+        $this->rolePermission = config('permission.policy.role_permission');
     }
 
     /**
