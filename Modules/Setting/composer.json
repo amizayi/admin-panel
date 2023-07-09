@@ -1,0 +1,23 @@
+{
+    "name": "DevAmiza/setting",
+    "description": "",
+    "authors": [
+        {
+            "name": "Amirreza Rezaei",
+            "email": "realDevAmiza@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Setting\\": ""
+        }
+    }
+}
