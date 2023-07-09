@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Modules\Setting\Fields\SettingFields;
 
 return new class extends Migration
 {
@@ -15,11 +16,11 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('key');
-            $table->string('title');
-            $table->text('description');
-            $table->text('value');
-            $table->boolean('status')->default(0);
+            $table->string(SettingFields::KEY);
+            $table->string(SettingFields::TITLE);
+            $table->text(SettingFields::DESCRIPTION);
+            $table->text(SettingFields::VALUE);
+            $table->boolean(SettingFields::STATUS)->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
