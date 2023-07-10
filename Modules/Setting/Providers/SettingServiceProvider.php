@@ -3,7 +3,8 @@
 namespace Modules\Setting\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
+use Modules\Setting\Repositories\Contracts\SettingRepository;
+use Modules\Setting\Repositories\Eloquent\SettingRepositoryEloquent;
 
 class SettingServiceProvider extends ServiceProvider
 {
@@ -22,18 +23,17 @@ class SettingServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-
+        $this->registerRepositories();
     }
-
     /**
-     * Register the service provider.
+     * Register module repositories.
      *
      * @return void
      */
-    public function register()
+    private function registerRepositories(): void
     {
-
+        $this->app->bind(SettingRepository::class, SettingRepositoryEloquent::class);
     }
 }
