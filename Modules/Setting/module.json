@@ -7,5 +7,7 @@
     "providers": [
         "Modules\\Setting\\Providers\\SettingServiceProvider"
     ],
-    "files": []
+    "files": [
+        "Helpers/helpers.php"
+    ]
 }
