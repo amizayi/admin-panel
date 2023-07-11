@@ -1,7 +1,7 @@
 {
     "name": "Auth",
     "alias": "auth",
-    "description": "",
+    "description": "admin-panel Auth module by Amirreza Rezaei.",
     "keywords": [],
     "priority": 0,
     "providers": [

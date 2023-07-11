@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string(SettingFields::KEY);
+            $table->string(SettingFields::KEY)->unique();
             $table->string(SettingFields::TITLE);
             $table->text(SettingFields::DESCRIPTION);
             $table->text(SettingFields::VALUE);

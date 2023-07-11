@@ -1,6 +1,6 @@
 {
-    "name": "DevAmiza/media",
-    "description": "",
+    "name": "MrAmiza/media-module",
+    "description": "admin-panel Media module by Amirreza Rezaei.",
     "require": {
         "intervention/image": "^2.7"
     },

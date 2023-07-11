@@ -1,7 +1,7 @@
 {
     "name": "Setting",
     "alias": "setting",
-    "description": "",
+    "description": "admin-panel Setting module by Amirreza Rezaei.",
     "keywords": [],
     "priority": 0,
     "providers": [

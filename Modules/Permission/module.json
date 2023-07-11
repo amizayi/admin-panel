@@ -1,7 +1,7 @@
 {
     "name": "Permission",
     "alias": "permission",
-    "description": "",
+    "description": "admin-panel Permission module by Amirreza Rezaei.",
     "keywords": [],
     "priority": 0,
     "files": [
