@@ -1,7 +1,7 @@
 {
     "name": "Core",
     "alias": "core",
-    "description": "",
+    "description": "admin-panel Core module by Amirreza Rezaei.",
     "keywords": [],
     "priority": 0,
     "providers": [

@@ -1,7 +1,7 @@
 {
     "name": "Api",
     "alias": "api",
-    "description": "",
+    "description": "admin-panel Api module by Amirreza Rezaei.",
     "keywords": [],
     "priority": 0,
     "files": [

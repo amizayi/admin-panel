@@ -1,7 +1,7 @@
 {
     "name": "Media",
     "alias": "media",
-    "description": "",
+    "description": "admin-panel Media module by Amirreza Rezaei.",
     "keywords": [],
     "priority": 0,
     "providers": [

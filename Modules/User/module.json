@@ -1,7 +1,7 @@
 {
     "name": "User",
     "alias": "user",
-    "description": "",
+    "description": "admin-panel User module by Amirreza Rezaei.",
     "keywords": [],
     "priority": 0,
     "providers": [
