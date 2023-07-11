@@ -2,9 +2,9 @@
 
 namespace Modules\Setting\Listeners;
 
-use Log;
 use Modules\Setting\Entities\Setting;
 use Throwable;
+use Log;
 
 class RefreshSettingCache
 {
