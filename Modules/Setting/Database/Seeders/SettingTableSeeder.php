@@ -16,6 +16,13 @@ class SettingTableSeeder extends Seeder
     {
         $settings = [
             [
+                'key'         => 'version',
+                'title'       => 'Site Version',
+                'description' => 'The version of your website or application',
+                'value'       => 'Your version',
+                'status'      => 1,
+            ],
+            [
                 'key'         => 'site_name',
                 'title'       => 'Site Name',
                 'description' => 'The name of your website or application',
