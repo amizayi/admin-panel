@@ -41,7 +41,7 @@ class Setting extends Model
     {
         try
         {
-            return self::all()->mapWithKeys(fn($pair) => [$pair->key => $pair->value]);
+            return self::all()->mapWithKeys(fn($pair) => [$pair->{SettingFields::KEY} => $pair->{SettingFields::VALUE}]);
         }
         catch (Throwable)
         {
