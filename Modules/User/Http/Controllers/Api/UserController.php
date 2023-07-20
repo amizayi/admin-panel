@@ -36,7 +36,7 @@ class UserController extends ApiController
         // create user
         $newUser = user()->create($inputs);
         // assign roles to user
-        $newUser->roles()->attach($request->{UserFields::ROLES});
+        $newUser->roles()->attach($request->input(UserFields::ROLES));
 
         return $this->successResponse(new UserResource($newUser), __response('user','store'));
     }
@@ -66,7 +66,7 @@ class UserController extends ApiController
         // update user
         $user = user()->update($inputs,$id);
         // sync roles to user
-        $user->roles()->sync($request->{UserFields::ROLES});
+        $user->roles()->sync($request->input(UserFields::ROLES));
 
         return $this->successResponse(new UserResource($user), __response('user','update'));
     }
