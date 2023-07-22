@@ -14,56 +14,21 @@ class SettingTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $settings = [
-            [
-                'key'         => 'version',
-                'value'       => 'Your version',
-            ],
-            [
-                'key'         => 'site_name',
-                'value'       => 'Your Site Name',
-            ],
-            [
-                'key'         => 'site_description',
-                'value'       => 'Your Site Description',
-            ],
-            [
-                'key'         => 'notification_email',
-                'value'       => 'notification@example.com',
-            ],
-            [
-                'key'         => 'pagination_limit',
-                'value'       => '10',
-            ],
-            [
-                'key'         => 'default_timezone',
-                'value'       => 'UTC',
-            ],
-            [
-                'key'         => 'default_currency',
-                'value'       => 'USD',
-            ],
-            [
-                'key'         => 'contact_email',
-                'value'       => 'contact@example.com',
-            ],
-            [
-                'key'         => 'allow_registration',
-                'value'       => '1',
-            ],
-            [
-                'key'         => 'max_file_upload_size',
-                'value'       => '10MB',
-            ],
-            [
-                'key'         => 'default_language',
-                'value'       => 'en',
-            ],
-        ];
+        $settings = collect([
+            'version'              =>  'Your version',
+            'site_name'            =>  'Your Site Name',
+            'site_description'     =>  'Your Site Description',
+            'notification_email'   =>  'notification@example.com',
+            'pagination_limit'     =>  '10',
+            'default_timezone'     =>  'UTC',
+            'default_currency'     =>  'USD',
+            'contact_email'        =>  'contact@example.com',
+            'allow_registration'   =>  '1',
+            'max_file_upload_size' =>  '10MB',
+            'default_language'     =>  'en'
+        ]);
 
         // Insert the data into the database
-        foreach ($settings as $setting) {
-            setting()->create($setting);
-        }
+        $settings->map(fn($key ,$value) => setting()->create(['key' => $key, 'value' => $value]));
     }
 }
