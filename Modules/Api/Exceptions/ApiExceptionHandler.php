@@ -5,13 +5,14 @@ namespace Modules\Api\Exceptions;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 use Modules\Api\Traits\ApiResponseTrait;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class ApiExceptionHandler extends ExceptionHandler
@@ -29,6 +30,16 @@ class ApiExceptionHandler extends ExceptionHandler
         'password_confirmation',
     ];
 
+
+    /**
+     * The exception classes that should not be reported.
+     *
+     * @var array
+     */
+    protected $dontReport = [
+        QueryException::class
+    ];
+
     /**
      * Render an exception into an HTTP response.
      *
@@ -38,14 +49,14 @@ class ApiExceptionHandler extends ExceptionHandler
      */
     public function render($request, Exception|Throwable $e): JsonResponse
     {
-        if ($e instanceof ValidationException)
-            return $this->errorResponse(
-                $e->validator->getMessageBag()->toArray(),
-                $e->getMessage(),
-                Response::HTTP_UNPROCESSABLE_ENTITY
-            );
+        return match (true) {
+            $e instanceof ValidationException     => $this->errorResponse($e->validator->getMessageBag()->toArray(),$e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY),
+            $e instanceof NotFoundHttpException   => $this->processParseError($e->getMessage(), $e, Response::HTTP_NOT_FOUND),
+            $e instanceof AuthorizationException  => $this->processParseError($e->getMessage(), $e, Response::HTTP_FORBIDDEN),
+            $e instanceof AuthenticationException => $this->processParseError($e->getMessage(), $e, Response::HTTP_UNAUTHORIZED),
+            $e instanceof QueryException          => $this->processParseError($e->getMessage(), $e),
 
-        // Handle all other exceptions
-        return $this->processParseError($e->getMessage(), $e);
+            default => $this->processParseError($e->getMessage(), $e),
+        };
     }
 }
