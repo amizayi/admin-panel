@@ -18,7 +18,15 @@ class UserController extends ApiController
      */
     public function index(): JsonResponse
     {
-        $data = user()->paginate();
+        $data = user()
+            ->select([
+            UserFields::ID,
+            UserFields::USERNAME,
+            UserFields::FULL_NAME,
+            UserFields::EMAIL,
+            UserFields::MOBILE,
+            UserFields::CREATED_AT])
+            ->paginate();
         return $this->successResponse(new UserResourceCollection($data), __response());
     }
 
