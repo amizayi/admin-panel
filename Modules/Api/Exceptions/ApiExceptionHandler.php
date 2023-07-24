@@ -30,6 +30,16 @@ class ApiExceptionHandler extends ExceptionHandler
         'password_confirmation',
     ];
 
+
+    /**
+     * The exception classes that should not be reported.
+     *
+     * @var array
+     */
+    protected $dontReport = [
+        QueryException::class
+    ];
+
     /**
      * Render an exception into an HTTP response.
      *
