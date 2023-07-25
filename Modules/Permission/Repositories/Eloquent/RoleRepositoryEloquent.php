@@ -38,7 +38,7 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
     public function deleteRoleAndChildren(int $id): mixed
     {
         $role = $this->find($id);
-        $role->permissions()->count();
+        $role->permissions()->delete();
 
         $role->children->map(function ($child) {
             $child->permissions()->delete();
