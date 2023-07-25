@@ -14,5 +14,4 @@ interface RoleRepository extends RepositoryInterface
      * @return  mixed deleted role object.
      */
     public function deleteRoleAndChildren(int $id): mixed;
-
 }

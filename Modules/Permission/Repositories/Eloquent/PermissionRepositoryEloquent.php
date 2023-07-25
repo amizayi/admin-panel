@@ -28,4 +28,13 @@ class PermissionRepositoryEloquent extends BaseRepository implements PermissionR
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
+    public function deletePermissionAndChildren(int $id): mixed
+    {
+        $permission = $this->find($id);
+
+        $permission->children()->delete();
+
+        return $permission;
+    }
 }

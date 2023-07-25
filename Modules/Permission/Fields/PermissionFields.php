@@ -14,7 +14,7 @@ class PermissionFields
     const TITLE       = 'title';
     const PARENT_ID   = 'parent_id';
     const GUARD_NAME  = 'guard_name';
-    const  KEY         = 'key';
+    const  KEY        = 'key';
     const PARENT_NAME = 'parent_name';
     const CHILDREN    = 'children';
 }
