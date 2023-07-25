@@ -22,7 +22,7 @@ class RoleSeederTableSeeder extends Seeder
             // Create permissions for each module
             foreach ($roles as $parentName => $children) {
                 // Create Parent
-                $parentRole = Role::create([
+                $parentRole = role()->create([
                     RoleFields::NAME       => $parentName,
                     RoleFields::TITLE      => __("permission::policy.role.$parentName.parent"),
                     RoleFields::GUARD_NAME => 'api',

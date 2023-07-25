@@ -28,7 +28,7 @@ class PermissionTableSeeder extends Seeder
                 // Create permissions for each module
                 foreach ($permissions as $parentName => $children) {
                     // Create Parent
-                    $parentPermission = Permission::create([
+                    $parentPermission = permission()->create([
                         PermissionFields::NAME       => $parentName,
                         PermissionFields::TITLE      => __("$moduleName::policy.permission.$parentName.parent"),
                         PermissionFields::GUARD_NAME => 'api',
