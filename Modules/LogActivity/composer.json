@@ -1,0 +1,26 @@
+{
+    "name": "DevAmiza/logactivity",
+    "description": "",
+    "authors": [
+        {
+            "name": "Amirreza Rezaei",
+            "email": "realDevAmiza@gmail.com"
+        }
+    ],
+    "require": {
+        "jenssegers/agent": "^2.6"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\LogActivity\\": ""
+        }
+    }
+}
