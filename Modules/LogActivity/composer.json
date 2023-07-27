@@ -7,6 +7,9 @@
             "email": "realDevAmiza@gmail.com"
         }
     ],
+    "require": {
+        "jenssegers/agent": "^2.6"
+    },
     "extra": {
         "laravel": {
             "providers": [],
