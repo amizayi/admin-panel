@@ -3,5 +3,5 @@
 
 
 Route::get('/dev', function () {
-    dd( user()->all() );
+    \Modules\LogActivity\Services\Logger::make();
 });
