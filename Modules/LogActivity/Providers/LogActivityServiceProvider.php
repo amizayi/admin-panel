@@ -3,37 +3,25 @@
 namespace Modules\LogActivity\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
+use Modules\LogActivity\Http\Middleware\LogActivityMiddleware;
 
 class LogActivityServiceProvider extends ServiceProvider
 {
-    /**
-     * @var string $moduleName
-     */
-    protected $moduleName = 'LogActivity';
-
-    /**
-     * @var string $moduleNameLower
-     */
-    protected $moduleNameLower = 'logactivity';
-
     /**
      * Boot the application events.
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-
+        // Register the middlewares
+        $this->registerMiddlewares();
     }
 
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
+    protected function registerMiddlewares(): void
     {
-
+        $router = $this->app['router'];
+        // Register the middleware for web routes
+        $router->aliasMiddleware('log.activity', LogActivityMiddleware::class);
     }
 }
