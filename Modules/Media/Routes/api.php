@@ -7,16 +7,11 @@ use Illuminate\Support\Facades\Artisan;
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
 */
 
-Route::prefix('media')->group(function () {
+Route::prefix('media')->middleware('log.activity')->group(fn() => [
     // set storage link directory
-    Route::get('/storage-link', function () {
-        Artisan::call('storage:link');
-    });
-});
+    Route::get('/storage-link', fn() => [
+        Artisan::call('storage:link')
+    ])
+]);

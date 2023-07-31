@@ -3,5 +3,5 @@
 
 
 Route::get('/dev', function () {
-    \Modules\LogActivity\Services\Logger::make();
-});
+    dd('hi');
+})->middleware('log.activity');
