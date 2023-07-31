@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Route::prefix('media')->group(function () {
+Route::prefix('media')->middleware('log.activity')->group(function () {
     // set storage link directory
     Route::get('/storage-link', function () {
         Artisan::call('storage:link');

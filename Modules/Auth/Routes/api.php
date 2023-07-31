@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('auth')->group(function () {
+Route::prefix('auth')->middleware('log.activity')->group(function () {
     // Basic
     Route::prefix('base')->controller(BasicAuthController::class)->group(function () {
         Route::post('login',       'login');
