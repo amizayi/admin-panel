@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\File;
 
 class LoggerJob implements ShouldQueue
 {
@@ -31,7 +32,13 @@ class LoggerJob implements ShouldQueue
      */
     public function handle(): void
     {
-        dd($this->logInfo);
-//        Log::info(json_encode($logInfo, JSON_PRETTY_PRINT));
+        if(env('LOG_ACTIVITY_FILE')) {
+            $logString = json_encode($this->logInfo, JSON_UNESCAPED_SLASHES) . PHP_EOL;
+            File::append(storage_path('/logs/activity.log'), $logString);
+        }
+
+        if(env('LOG_ACTIVITY_DATABASE')) {
+            // TODO: save logs in database
+        }
     }
 }
