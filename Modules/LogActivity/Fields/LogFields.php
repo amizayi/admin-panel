@@ -26,4 +26,5 @@ class LogFields
     const URL              = 'url';
     const PREVIOUS_URL     = 'previous_url';
     const CONTROLLER       = 'controller';
+    const DATE_TIME        = 'date_time';
 }

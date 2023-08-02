@@ -1,14 +1,10 @@
 <?php
 
-namespace Modules\LogActivity\Services;
+namespace Modules\LogActivity\Contracts\Services;
 
-
-use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
-use Modules\LogActivity\Fields\LogFields;
-use Modules\LogActivity\Contracts\Services\LoggerServiceInterface;
 
-class Logger implements LoggerServiceInterface
+interface LoggerServiceInterface
 {
     /**
      * Get the information for logging a request.
@@ -29,22 +25,5 @@ class Logger implements LoggerServiceInterface
      * - 'is_desktop': A boolean indicating whether the user is accessing the application from a desktop device.
      * - 'is_tablet': A boolean indicating whether the user is accessing the application from a tablet device.
      */
-    public function info(Request $request): array
-    {
-        $agent = new Agent();
-
-        return [
-            LogFields::IP_ADDRESS => $request->ip(),
-            LogFields::URL        => $request->url(),
-            LogFields::ACTION     => $request->route()?->getActionMethod(),
-            LogFields::USER_ID    => auth()->user()?->id ?? null,
-            LogFields::DEVICE     => $agent->device(),
-            LogFields::PLATFORM   => $agent->platform(),
-            LogFields::BROWSER    => $agent->browser(),
-            LogFields::IS_MOBILE  => $agent->isMobile(),
-            LogFields::IS_DESKTOP => $agent->isDesktop(),
-            LogFields::IS_TABLET  => $agent->isTablet(),
-            LogFields::DATE_TIME  => now(),
-        ];
-    }
+    public function info(Request $request): array;
 }
