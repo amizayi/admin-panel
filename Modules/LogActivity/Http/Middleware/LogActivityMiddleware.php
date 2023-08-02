@@ -21,7 +21,7 @@ class LogActivityMiddleware
     public function handle(Request $request, Closure $next): mixed
     {
         try {
-            $logInfo = Logger::info($request);
+            $logInfo = (new Logger())->info($request);
             LoggerJob::dispatch($logInfo)->onQueue('activity_logs'); // Optionally, you can specify the queue name.
         } catch (Exception $e) {
             // Log the exception for debugging purposes
