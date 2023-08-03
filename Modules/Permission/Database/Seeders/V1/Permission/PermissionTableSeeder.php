@@ -30,14 +30,14 @@ class PermissionTableSeeder extends Seeder
                     $parentPermission = permission()->create([
                         PermissionFields::NAME       => $parentName,
                         PermissionFields::TITLE      => __("$moduleName::policy.permission.$parentName.parent"),
-                        PermissionFields::GUARD_NAME => 'API',
+                        PermissionFields::GUARD_NAME => 'api',
                     ]);
                     // Create Children
                     foreach ($children as $permissionName) {
                         $parentPermission->children()->create([
                             PermissionFields::NAME       => "{$parentName}_{$permissionName}",
                             PermissionFields::TITLE      => __("$moduleName::policy.permission.$parentName.$permissionName"),
-                            PermissionFields::GUARD_NAME => 'API',
+                            PermissionFields::GUARD_NAME => 'api',
                         ]);
                     }
                 }

@@ -24,7 +24,7 @@ class RoleSeederTableSeeder extends Seeder
                 $parentRole = role()->create([
                     RoleFields::NAME       => $parentName,
                     RoleFields::TITLE      => __("permission::policy.role.$parentName.parent"),
-                    RoleFields::GUARD_NAME => 'API',
+                    RoleFields::GUARD_NAME => 'api',
                 ]);
                 // Create Children
                 foreach ($children as $roleName) {
@@ -32,7 +32,7 @@ class RoleSeederTableSeeder extends Seeder
                         RoleFields::NAME       => "{$roleName}",
                         RoleFields::TITLE      => __("permission::policy.role.$parentName.$roleName"),
                         RoleFields::PARENT_ID  => $parentRole->id,
-                        RoleFields::GUARD_NAME => 'API',
+                        RoleFields::GUARD_NAME => 'api',
                     ]);
                 }
             }
