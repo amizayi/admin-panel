@@ -5,12 +5,12 @@ namespace Modules\Auth\Http\Controllers\Api;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Modules\Api\Http\Controllers\ApiController;
+use Modules\Api\Http\Controllers\Api\V1\ApiController;
+use Modules\Auth\Fields\AuthFields;
 use Modules\Auth\Http\Requests\Api\LoginRequest;
 use Modules\Auth\Http\Requests\Api\RegisterRequest;
 use Modules\Auth\Traits\AuthTrait;
 use Modules\Auth\Transformers\AuthResource;
-use Modules\Auth\Fields\AuthFields;
 
 class BasicAuthController extends ApiController
 {

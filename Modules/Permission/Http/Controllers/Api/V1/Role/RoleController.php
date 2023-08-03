@@ -4,7 +4,7 @@ namespace Modules\Permission\Http\Controllers\Api\V1\Role;
 
 
 use Illuminate\Http\JsonResponse;
-use Modules\Api\Http\Controllers\ApiController;
+use Modules\Api\Http\Controllers\Api\V1\ApiController;
 use Modules\Permission\Entities\V1\Role\RoleFields;
 use Modules\Permission\Http\Requests\Api\V1\Role\RoleRequest;
 use Modules\Permission\Transformers\V1\Role\RoleResource;

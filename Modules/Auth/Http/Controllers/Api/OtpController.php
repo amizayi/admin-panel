@@ -2,13 +2,13 @@
 
 namespace Modules\Auth\Http\Controllers\Api;
 
-use Modules\Auth\Http\Requests\Api\VerifyRequest;
-use Modules\Api\Http\Controllers\ApiController;
-use Modules\Auth\Http\Requests\Api\OTPRequest;
-use Modules\Auth\Transformers\AuthResource;
-use Modules\Auth\Services\OtpGenerator;
+use Modules\Api\Http\Controllers\Api\V1\ApiController;
 use Modules\Auth\Fields\OtpFields;
+use Modules\Auth\Http\Requests\Api\OTPRequest;
+use Modules\Auth\Http\Requests\Api\VerifyRequest;
+use Modules\Auth\Services\OtpGenerator;
 use Modules\Auth\Traits\AuthTrait;
+use Modules\Auth\Transformers\AuthResource;
 
 class OtpController extends ApiController
 {

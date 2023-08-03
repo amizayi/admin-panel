@@ -3,7 +3,7 @@
 namespace Modules\Permission\Http\Controllers\Api\V1\Permission;
 
 use Illuminate\Http\JsonResponse;
-use Modules\Api\Http\Controllers\ApiController;
+use Modules\Api\Http\Controllers\Api\V1\ApiController;
 use Modules\Permission\Entities\V1\Permission\PermissionFields;
 use Modules\Permission\Transformers\V1\Permission\PermissionResource;
 use Modules\Permission\Transformers\V1\Permission\PermissionResourceCollection;
