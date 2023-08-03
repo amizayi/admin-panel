@@ -5,7 +5,7 @@ namespace Modules\Auth\Transformers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Auth\Fields\AuthFields;
-use Modules\Permission\Transformers\Role\RoleResource;
+use Modules\Permission\Transformers\V1\Role\RoleResource;
 use Modules\User\Transformers\V1\User\UserResource;
 
 class AuthResource extends JsonResource

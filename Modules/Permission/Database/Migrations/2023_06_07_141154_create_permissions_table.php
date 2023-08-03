@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\Permission\Fields\PermissionFields;
-use Modules\Permission\Fields\RoleFields;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Modules\Permission\Entities\V1\Permission\PermissionFields;
+use Modules\Permission\Entities\V1\Role\RoleFields;
 use Spatie\Permission\PermissionRegistrar;
 
 return new class extends Migration {
