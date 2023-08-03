@@ -4,7 +4,7 @@ namespace Modules\LogActivity\Contracts\Services;
 
 use Illuminate\Http\Request;
 
-interface LoggerServiceInterface
+interface LoggerService
 {
     /**
      * Get the information for logging a request.

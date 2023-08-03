@@ -6,9 +6,9 @@ namespace Modules\LogActivity\Services;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use Modules\LogActivity\Fields\LogFields;
-use Modules\LogActivity\Contracts\Services\LoggerServiceInterface;
+use Modules\LogActivity\Contracts\Services\LoggerService;
 
-class Logger implements LoggerServiceInterface
+class Logger implements LoggerService
 {
     /**
      * Get the information for logging a request.
