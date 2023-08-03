@@ -1,11 +1,10 @@
 <?php
 
-namespace Modules\User\Database\factories;
+namespace Modules\User\Database\factories\V1;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\Entities\User;
-use Modules\User\Fields\UserFields;
+use Modules\User\Entities\V1\User\UserFields;
 
 class UserFactory extends Factory
 {
@@ -14,7 +13,7 @@ class UserFactory extends Factory
      *
      * @var string
      */
-    protected $model = \Modules\User\Entities\User::class;
+    protected $model = \Modules\User\Entities\V1\User\User::class;
 
     /**
      * Define the model's default state.

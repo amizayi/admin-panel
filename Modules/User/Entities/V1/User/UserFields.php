@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\User\Fields;
+namespace Modules\User\Entities\V1\User;
 
 /*
 |--------------------------------------------------------------------------

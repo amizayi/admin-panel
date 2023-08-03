@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\User\Transformers;
+namespace Modules\User\Transformers\V1\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Modules\User\Fields\UserFields;
+use Modules\User\Entities\V1\User\UserFields;
 
 class UserResource extends JsonResource
 {

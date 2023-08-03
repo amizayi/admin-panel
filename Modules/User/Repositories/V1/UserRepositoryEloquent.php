@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\User\Repositories\Eloquent;
+namespace Modules\User\Repositories\V1;
 
-use Modules\User\Entities\User;
-use Modules\User\Repositories\Contracts\UserRepository;
-use Prettus\Repository\Eloquent\BaseRepository;
+use Modules\User\Contracts\V1\Repositories\UserRepository;
+use Modules\User\Entities\V1\User\User;
 use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Exceptions\RepositoryException;
 
 class UserRepositoryEloquent extends BaseRepository implements UserRepository

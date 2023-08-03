@@ -1,11 +1,10 @@
 <?php
 
-namespace Modules\User\Transformers;
+namespace Modules\User\Transformers\V1\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Modules\User\Fields\UserFields;
-use function formatPaginationDetails;
+use Modules\User\Entities\V1\User\UserFields;
 
 class UserResourceCollection extends ResourceCollection
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\User\Database\Seeders;
+namespace Modules\User\Database\Seeders\V1;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\Enums\UserStatus;
-use Modules\User\Fields\UserFields;
+use Modules\User\Entities\V1\User\UserFields;
+use Modules\User\Enums\V1\UserStatus;
 
 class UserTableSeeder extends Seeder
 {

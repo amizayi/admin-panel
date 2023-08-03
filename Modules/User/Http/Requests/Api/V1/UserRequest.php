@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\User\Http\Requests\Api;
+namespace Modules\User\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Modules\User\Fields\UserFields;
+use Modules\User\Entities\V1\User\UserFields;
 
 class UserRequest extends FormRequest
 {
