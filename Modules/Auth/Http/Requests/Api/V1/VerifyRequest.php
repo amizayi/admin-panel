@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Auth\Http\Requests\Api;
+namespace Modules\Auth\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Modules\Auth\Fields\OtpFields;
+use Modules\Auth\Fields\V1\OtpFields;
 
 class VerifyRequest extends FormRequest
 {

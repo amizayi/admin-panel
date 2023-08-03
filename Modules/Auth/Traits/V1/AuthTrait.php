@@ -1,8 +1,7 @@
 <?php
 
-namespace Modules\Auth\Traits;
+namespace Modules\Auth\Traits\V1;
 
-use Hash;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

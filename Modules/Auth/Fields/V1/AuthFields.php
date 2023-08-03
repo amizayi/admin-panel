@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Auth\Fields;
+namespace Modules\Auth\Fields\V1;
 
 /*
 |--------------------------------------------------------------------------

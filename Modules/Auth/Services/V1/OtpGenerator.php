@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Auth\Services;
+namespace Modules\Auth\Services\V1;
 
 use Illuminate\Support\Facades\Cache;
 

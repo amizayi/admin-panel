@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Auth\Http\Controllers\Api\OAuth;
+namespace Modules\Auth\Http\Controllers\Api\V1\OAuth;
 
 
 use GuzzleHttp\Exception\ClientException;
