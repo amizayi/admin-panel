@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Setting\Events;
+namespace Modules\Setting\Events\V1;
 
 use Illuminate\Queue\SerializesModels;
 

@@ -1,13 +1,12 @@
 <?php
 
-namespace Modules\Setting\Entities;
+namespace Modules\Setting\Entities\V1\Setting;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use Modules\Setting\Events\SettingModified;
-use Modules\Setting\Fields\SettingFields;
+use Modules\Setting\Events\V1\SettingModified;
 use Throwable;
 
 class Setting extends Model

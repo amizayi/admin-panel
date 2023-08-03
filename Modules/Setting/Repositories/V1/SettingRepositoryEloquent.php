@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Setting\Repositories\Eloquent;
+namespace Modules\Setting\Repositories\V1;
 
-use Modules\Setting\Entities\Setting;
-use Modules\Setting\Repositories\Contracts\SettingRepository;
+use Modules\Setting\Contracts\V1\Repositories\SettingRepository;
+use Modules\Setting\Entities\V1\Setting\Setting;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Exceptions\RepositoryException;

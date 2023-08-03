@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Setting\Fields;
+namespace Modules\Setting\Entities\V1\Setting;
 
 class SettingFields
 {

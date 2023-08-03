@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Setting\Listeners;
+namespace Modules\Setting\Listeners\V1;
 
-use Modules\Setting\Entities\Setting;
-use Throwable;
 use Log;
+use Modules\Setting\Entities\V1\Setting\Setting;
+use Throwable;
 
 class RefreshSettingCache
 {

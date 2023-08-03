@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\Setting\Fields\SettingFields;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Modules\Setting\Entities\V1\Setting\SettingFields;
 
 return new class extends Migration
 {
