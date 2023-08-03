@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\LogActivity\Contracts\Services;
+namespace Modules\LogActivity\Contracts\V1\Services;
 
 use Illuminate\Http\Request;
 

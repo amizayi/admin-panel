@@ -1,6 +1,6 @@
 <?php
 
-use Modules\LogActivity\Contracts\Repositories\LogActivityRepository;
+use Modules\LogActivity\Contracts\V1\Repositories\LogActivityRepository;
 
 if (!function_exists('logActivity')) {
     /**

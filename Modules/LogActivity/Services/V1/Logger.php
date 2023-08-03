@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\LogActivity\Services;
+namespace Modules\LogActivity\Services\V1;
 
 
-use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
-use Modules\LogActivity\Fields\LogFields;
-use Modules\LogActivity\Contracts\Services\LoggerService;
+use Jenssegers\Agent\Agent;
+use Modules\LogActivity\Contracts\V1\Services\LoggerService;
+use Modules\LogActivity\Entities\V1\LogActivity\LogActivityFields;
 
 class Logger implements LoggerService
 {
@@ -34,17 +34,17 @@ class Logger implements LoggerService
         $agent = new Agent();
 
         return [
-            LogFields::IP_ADDRESS => $request->ip(),
-            LogFields::URL        => $request->url(),
-            LogFields::ACTION     => $request->route()?->getActionMethod(),
-            LogFields::USER_ID    => auth()->user()?->id ?? null,
-            LogFields::DEVICE     => $agent->device(),
-            LogFields::PLATFORM   => $agent->platform(),
-            LogFields::BROWSER    => $agent->browser(),
-            LogFields::IS_MOBILE  => $agent->isMobile(),
-            LogFields::IS_DESKTOP => $agent->isDesktop(),
-            LogFields::IS_TABLET  => $agent->isTablet(),
-            LogFields::DATE_TIME  => now(),
+            LogActivityFields::IP_ADDRESS => $request->ip(),
+            LogActivityFields::URL        => $request->url(),
+            LogActivityFields::ACTION     => $request->route()?->getActionMethod(),
+            LogActivityFields::USER_ID    => auth()->user()?->id ?? null,
+            LogActivityFields::DEVICE     => $agent->device(),
+            LogActivityFields::PLATFORM   => $agent->platform(),
+            LogActivityFields::BROWSER    => $agent->browser(),
+            LogActivityFields::IS_MOBILE  => $agent->isMobile(),
+            LogActivityFields::IS_DESKTOP => $agent->isDesktop(),
+            LogActivityFields::IS_TABLET  => $agent->isTablet(),
+            LogActivityFields::DATE_TIME  => now(),
         ];
     }
 }

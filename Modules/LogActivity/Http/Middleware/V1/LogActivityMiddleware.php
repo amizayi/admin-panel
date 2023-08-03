@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\LogActivity\Http\Middleware;
+namespace Modules\LogActivity\Http\Middleware\V1;
 
 use Closure;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Modules\LogActivity\Jobs\LoggerJob;
-use Modules\LogActivity\Services\Logger;
+use Modules\LogActivity\Jobs\V1\LoggerJob;
+use Modules\LogActivity\Services\V1\Logger;
 
 class LogActivityMiddleware
 {

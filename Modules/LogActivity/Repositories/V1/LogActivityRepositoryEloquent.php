@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\LogActivity\Repositories;
+namespace Modules\LogActivity\Repositories\V1;
 
-use Modules\LogActivity\Contracts\Repositories\LogActivityRepository;
-use Modules\LogActivity\Entities\LogActivity;
+use Modules\LogActivity\Contracts\V1\Repositories\LogActivityRepository;
+use Modules\LogActivity\Entities\V1\LogActivity\LogActivity;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Exceptions\RepositoryException;

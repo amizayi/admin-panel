@@ -3,9 +3,9 @@
 namespace Modules\LogActivity\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\LogActivity\Contracts\Repositories\LogActivityRepository;
-use Modules\LogActivity\Http\Middleware\LogActivityMiddleware;
-use Modules\LogActivity\Repositories\LogActivityRepositoryEloquent;
+use Modules\LogActivity\Contracts\V1\Repositories\LogActivityRepository;
+use Modules\LogActivity\Http\Middleware\V1\LogActivityMiddleware;
+use Modules\LogActivity\Repositories\V1\LogActivityRepositoryEloquent;
 
 class LogActivityServiceProvider extends ServiceProvider
 {

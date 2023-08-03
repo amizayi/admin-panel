@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\LogActivity\Fields;
+namespace Modules\LogActivity\Entities\V1\LogActivity;
 
-class LogFields
+class LogActivityFields
 {
     const ID               = 'id';
     const USER_ID          = 'user_id';
