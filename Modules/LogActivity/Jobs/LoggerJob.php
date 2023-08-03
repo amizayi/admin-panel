@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class LoggerJob implements ShouldQueue
@@ -32,13 +33,33 @@ class LoggerJob implements ShouldQueue
      */
     public function handle(): void
     {
-        if(env('LOG_ACTIVITY_FILE')) {
-            $logString = json_encode($this->logInfo, JSON_UNESCAPED_SLASHES) . PHP_EOL;
-            File::append(storage_path('/logs/activity.log'), $logString);
-        }
+        if (config('logactivity.config.file'))
+            $this->logToFile($this->logInfo);
 
-        if(env('LOG_ACTIVITY_DATABASE')) {
-            // TODO: save logs in database
-        }
+        if (config('logactivity.config.database'))
+            $this->logToDatabase($this->logInfo);
+    }
+
+    /**
+     * Log activity information to a file.
+     *
+     * @param array $logInfo The activity log information.
+     * @return void
+     */
+    private function logToFile(array $logInfo): void
+    {
+        $logString = json_encode($logInfo, JSON_UNESCAPED_SLASHES) . PHP_EOL;
+        File::append(storage_path('logs/activity.log'), $logString);
+    }
+
+    /**
+     * Log activity information to the database.
+     *
+     * @param array $logInfo The activity log information.
+     * @return void
+     */
+    private function logToDatabase(array $logInfo): void
+    {
+        DB::table('log_activities')->insert($logInfo);
     }
 }
