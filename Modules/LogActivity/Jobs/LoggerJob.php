@@ -7,7 +7,6 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class LoggerJob implements ShouldQueue
@@ -60,6 +59,6 @@ class LoggerJob implements ShouldQueue
      */
     private function logToDatabase(array $logInfo): void
     {
-        DB::table('log_activities')->insert($logInfo);
+        logActivity()->create($logInfo);
     }
 }
