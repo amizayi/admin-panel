@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Media\Fields;
+namespace Modules\Media\Entities\V1\Media;
 
 class MediaFields
 {

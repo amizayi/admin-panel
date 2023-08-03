@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Media\Services;
+namespace Modules\Media\Services\V1;
 
-use Illuminate\Support\Facades\Storage;
-use Modules\Media\Fields\MediaFields;
-use Intervention\Image\Facades\Image;
-use Modules\Media\Fields\DiskFields;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+use Modules\Media\Entities\V1\Media\MediaFields;
+use Modules\Media\Fields\V1\DiskFields;
 
 class PublicMediaService extends BaseMediaService
 {

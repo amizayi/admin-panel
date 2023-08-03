@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Media\Services;
+namespace Modules\Media\Services\V1;
 
 use Carbon\Carbon;
 use Illuminate\Http\UploadedFile;
-use Modules\Media\Fields\MediaFields;
+use Modules\Media\Entities\V1\Media\MediaFields;
 
 class BaseMediaService
 {

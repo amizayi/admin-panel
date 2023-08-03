@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Media\Services;
+namespace Modules\Media\Services\V1;
 
 use Illuminate\Http\UploadedFile;
-use Modules\Media\Fields\DiskFields;
+use Modules\Media\Fields\V1\DiskFields;
 
 class MediaProcessor
 {
@@ -18,7 +18,7 @@ class MediaProcessor
     {
         return match ($disk) {
             DiskFields::PUBLIC => (new PublicMediaService())->saveFile($file),
-            DiskFields::FTP => (new FTPMediaService())->saveFile($file),
+            DiskFields::FTP    => (new FTPMediaService())->saveFile($file),
         };
     }
 
@@ -33,7 +33,7 @@ class MediaProcessor
     {
         return match ($disk) {
             DiskFields::PUBLIC => (new PublicMediaService())->saveFiles($files),
-            DiskFields::FTP => (new FTPMediaService())->saveFiles($files),
+            DiskFields::FTP    => (new FTPMediaService())->saveFiles($files),
         };
     }
 }

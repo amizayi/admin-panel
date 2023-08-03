@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Media\Fields;
+namespace Modules\Media\Fields\V1;
 
 class DiskFields
 {
