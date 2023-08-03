@@ -7,5 +7,7 @@
     "providers": [
         "Modules\\LogActivity\\Providers\\LogActivityServiceProvider"
     ],
-    "files": []
+    "files": [
+        "Helpers/helpers.php"
+    ]
 }

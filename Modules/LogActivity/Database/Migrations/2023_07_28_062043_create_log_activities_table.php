@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\LogActivity\Fields\LogFields;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Modules\LogActivity\Entities\V1\LogActivity\LogActivityFields;
 
 return new class extends Migration
 {
@@ -16,17 +16,17 @@ return new class extends Migration
     {
         Schema::create('log_activities', function (Blueprint $table) {
             $table->id();
-            $table->string(LogFields::IP_ADDRESS)->nullable();
-            $table->string(LogFields::URL)->nullable();
-            $table->string(LogFields::ACTION)->nullable();
-            $table->unsignedBigInteger(LogFields::USER_ID)->nullable();
-            $table->string(LogFields::DEVICE)->nullable();
-            $table->string(LogFields::PLATFORM)->nullable();
-            $table->string(LogFields::BROWSER)->nullable();
-            $table->boolean(LogFields::IS_MOBILE);
-            $table->boolean(LogFields::IS_DESKTOP);
-            $table->boolean(LogFields::IS_TABLET);
-            $table->dateTime(LogFields::DATE_TIME);
+            $table->string(LogActivityFields::IP_ADDRESS)->nullable();
+            $table->string(LogActivityFields::URL)->nullable();
+            $table->string(LogActivityFields::ACTION)->nullable();
+            $table->unsignedBigInteger(LogActivityFields::USER_ID)->nullable();
+            $table->string(LogActivityFields::DEVICE)->nullable();
+            $table->string(LogActivityFields::PLATFORM)->nullable();
+            $table->string(LogActivityFields::BROWSER)->nullable();
+            $table->boolean(LogActivityFields::IS_MOBILE);
+            $table->boolean(LogActivityFields::IS_DESKTOP);
+            $table->boolean(LogActivityFields::IS_TABLET);
+            $table->dateTime(LogActivityFields::DATE_TIME);
             $table->timestamps();
         });
     }

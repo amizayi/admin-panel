@@ -1,7 +1,7 @@
 <?php
 
-use Modules\Permission\Repositories\Contracts\PermissionRepository;
-use Modules\Permission\Repositories\Contracts\RoleRepository;
+use Modules\Permission\Contracts\V1\Repositories\Permission\PermissionRepository;
+use Modules\Permission\Contracts\V1\Repositories\Role\RoleRepository;
 
 if (!function_exists('permission')) {
     /**

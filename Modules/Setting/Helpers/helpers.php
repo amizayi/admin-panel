@@ -1,6 +1,6 @@
 <?php
 
-use Modules\Setting\Repositories\Contracts\SettingRepository;
+use Modules\Setting\Contracts\V1\Repositories\SettingRepository;
 
 if (!function_exists('setting')) {
     /**

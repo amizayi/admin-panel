@@ -3,7 +3,9 @@
 namespace Modules\LogActivity\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\LogActivity\Http\Middleware\LogActivityMiddleware;
+use Modules\LogActivity\Contracts\V1\Repositories\LogActivityRepository;
+use Modules\LogActivity\Http\Middleware\V1\LogActivityMiddleware;
+use Modules\LogActivity\Repositories\V1\LogActivityRepositoryEloquent;
 
 class LogActivityServiceProvider extends ServiceProvider
 {
@@ -16,12 +18,18 @@ class LogActivityServiceProvider extends ServiceProvider
     {
         // Register the middlewares
         $this->registerMiddlewares();
+        // Register the repositories
+        $this->registerRepositories();
     }
 
-    protected function registerMiddlewares(): void
+    private function registerMiddlewares(): void
     {
         $router = $this->app['router'];
-        // Register the middleware for web routes
         $router->aliasMiddleware('log.activity', LogActivityMiddleware::class);
+    }
+
+    private function registerRepositories(): void
+    {
+        $this->app->bind(LogActivityRepository::class,LogActivityRepositoryEloquent::class);
     }
 }

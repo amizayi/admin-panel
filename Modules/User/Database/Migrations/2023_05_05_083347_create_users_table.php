@@ -1,11 +1,11 @@
 <?php
 
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\User\Enums\UserStatus;
-use Modules\User\Fields\UserFields;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Modules\User\Entities\V1\User\UserFields;
+use Modules\User\Enums\V1\UserStatus;
 
 return new class extends Migration
 {
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string(UserFields::FIRST_NAME)->nullable();
             $table->string(UserFields::LAST_NAME)->nullable();
             $table->string(UserFields::FULL_NAME)->nullable();
-            $table->string(UserFields::MOBILE)->unique();
+            $table->string(UserFields::MOBILE)->nullable()->unique();
             $table->string(UserFields::EMAIL)->unique();
             $table->timestamp(UserFields::EMAIL_VERIFIED_AT)->nullable();
             $table->string(UserFields::PASSWORD);

@@ -3,8 +3,8 @@
 namespace Modules\Setting\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Setting\Repositories\Contracts\SettingRepository;
-use Modules\Setting\Repositories\Eloquent\SettingRepositoryEloquent;
+use Modules\Setting\Contracts\V1\Repositories\SettingRepository;
+use Modules\Setting\Repositories\V1\SettingRepositoryEloquent;
 
 class SettingServiceProvider extends ServiceProvider
 {

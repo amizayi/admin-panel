@@ -3,10 +3,10 @@
 namespace Modules\Permission\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Permission\Repositories\Contracts\PermissionRepository;
-use Modules\Permission\Repositories\Contracts\RoleRepository;
-use Modules\Permission\Repositories\Eloquent\PermissionRepositoryEloquent;
-use Modules\Permission\Repositories\Eloquent\RoleRepositoryEloquent;
+use Modules\Permission\Contracts\V1\Repositories\Permission\PermissionRepository;
+use Modules\Permission\Contracts\V1\Repositories\Role\RoleRepository;
+use Modules\Permission\Repositories\V1\Permission\PermissionRepositoryEloquent;
+use Modules\Permission\Repositories\V1\Role\RoleRepositoryEloquent;
 
 class PermissionServiceProvider extends ServiceProvider
 {

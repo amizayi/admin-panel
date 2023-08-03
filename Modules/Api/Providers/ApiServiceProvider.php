@@ -15,7 +15,7 @@ class ApiServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             \Illuminate\Contracts\Debug\ExceptionHandler::class,
-            \Modules\Api\Exceptions\ApiExceptionHandler::class
+            \Modules\Api\Exceptions\V1\ApiExceptionHandler::class
         );
     }
 }

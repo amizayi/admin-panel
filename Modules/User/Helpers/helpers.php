@@ -1,7 +1,7 @@
 <?php
 
 
-use Modules\User\Repositories\Contracts\UserRepository;
+use Modules\User\Contracts\V1\Repositories\UserRepository;
 
 if (!function_exists('user')) {
     /**
