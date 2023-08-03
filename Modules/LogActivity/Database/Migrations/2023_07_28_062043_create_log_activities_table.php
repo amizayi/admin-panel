@@ -16,13 +16,13 @@ return new class extends Migration
     {
         Schema::create('log_activities', function (Blueprint $table) {
             $table->id();
-            $table->string(LogFields::IP_ADDRESS);
-            $table->string(LogFields::URL);
-            $table->string(LogFields::ACTION);
-            $table->unsignedBigInteger(LogFields::USER_ID);
-            $table->string(LogFields::DEVICE);
-            $table->string(LogFields::PLATFORM);
-            $table->string(LogFields::BROWSER);
+            $table->string(LogFields::IP_ADDRESS)->nullable();
+            $table->string(LogFields::URL)->nullable();
+            $table->string(LogFields::ACTION)->nullable();
+            $table->unsignedBigInteger(LogFields::USER_ID)->nullable();
+            $table->string(LogFields::DEVICE)->nullable();
+            $table->string(LogFields::PLATFORM)->nullable();
+            $table->string(LogFields::BROWSER)->nullable();
             $table->boolean(LogFields::IS_MOBILE);
             $table->boolean(LogFields::IS_DESKTOP);
             $table->boolean(LogFields::IS_TABLET);
