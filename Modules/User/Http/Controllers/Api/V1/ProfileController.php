@@ -2,17 +2,60 @@
 
 namespace Modules\User\Http\Controllers\Api\V1;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Modules\Api\Http\Controllers\Api\V1\ApiController;
+use Modules\User\Entities\V1\User\UserFields;
 use Modules\User\Transformers\V1\Profile\ProfileResource;
 
 class ProfileController extends ApiController
 {
-    public function info()
+    /**
+     * Get Authenticated User Info
+     *
+     * @return JsonResponse
+     */
+    public function info(): JsonResponse
     {
         return $this->successResponse(
             new ProfileResource(auth()->user()),
-            __('get user info')
+            __response()
         );
+    }
+
+    /**
+     * Update Authenticated User Info
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function update(Request $request): JsonResponse
+    {
+        $user   = auth()->user();
+
+        $inputs = $request->only($this->getRequestFields());
+
+        $user->update($inputs);
+
+        return $this->successResponse(
+            new ProfileResource($user),
+            __response("user", "update")
+        );
+    }
+
+    /**
+     * Get Request Fields
+     *
+     * @return array
+     */
+    private function getRequestFields(): array
+    {
+        return [
+            UserFields::USERNAME,
+            UserFields::EMAIL,
+            UserFields::MOBILE,
+            UserFields::FIRST_NAME,
+            UserFields::LAST_NAME,
+        ];
     }
 }
