@@ -6,6 +6,5 @@
     "Auth": true,
     "Media": true,
     "Setting": true,
-    "Notification": true,
     "LogActivity": true
 }
