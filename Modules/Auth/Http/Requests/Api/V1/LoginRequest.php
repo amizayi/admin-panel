@@ -4,6 +4,7 @@ namespace Modules\Auth\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Modules\Auth\Fields\V1\AuthFields;
+use Modules\Kernel\Rules\CustomBooleanRule;
 
 class LoginRequest extends FormRequest
 {
@@ -17,7 +18,7 @@ class LoginRequest extends FormRequest
         return [
             AuthFields::USERNAME => 'required|exists:users,'.AuthFields::USERNAME,
             AuthFields::PASSWORD => 'required',
-            AuthFields::REMEMBER => 'boolean',
+            AuthFields::REMEMBER => new CustomBooleanRule(),
         ];
     }
 }

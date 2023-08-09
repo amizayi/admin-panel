@@ -22,7 +22,7 @@ class RoleResourceCollection extends ResourceCollection
                 RoleFields::KEY   => $parent->{RoleFields::NAME},
                 RoleFields::TITLE => $parent->{RoleFields::TITLE},
 
-                RoleFields::PERMISSIONS => $parent->children->map(fn($role) => [
+                RoleFields::CHILDREN => $parent->children->map(fn($role) => [
                     RoleFields::ID    => $role->{RoleFields::ID},
                     RoleFields::KEY   => $role->{RoleFields::NAME},
                     RoleFields::TITLE => $role->{RoleFields::TITLE},

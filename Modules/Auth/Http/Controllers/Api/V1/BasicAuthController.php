@@ -5,12 +5,12 @@ namespace Modules\Auth\Http\Controllers\Api\V1;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Modules\Api\Http\Controllers\Api\V1\ApiController;
 use Modules\Auth\Fields\V1\AuthFields;
 use Modules\Auth\Http\Requests\Api\V1\LoginRequest;
 use Modules\Auth\Http\Requests\Api\V1\RegisterRequest;
 use Modules\Auth\Traits\V1\AuthTrait;
 use Modules\Auth\Transformers\V1\AuthResource;
+use Modules\Kernel\Http\Controllers\Api\V1\ApiController;
 
 class BasicAuthController extends ApiController
 {
@@ -57,7 +57,6 @@ class BasicAuthController extends ApiController
 
         return $this->successResponse(new AuthResource($user,$token),__('auth::response.register_success'));
     }
-
 
     /**
      * Revokes all the authenticated user's Sanctum tokens and logs them out.

@@ -14,7 +14,7 @@
     </testsuites>
     <source>
         <include>
-            <directory>app</directory>
+<!--            <directory>app</directory>-->
             <directory>modules</directory>
             <directory>modules/*</directory>
         </include>
