@@ -39,7 +39,7 @@ class ProfileController extends ApiController
 
         return $this->successResponse(
             new ProfileResource($user),
-            __response("user", "update")
+            __response("profile", "update")
         );
     }
 
