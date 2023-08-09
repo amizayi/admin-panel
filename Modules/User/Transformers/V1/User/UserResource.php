@@ -24,7 +24,7 @@ class UserResource extends JsonResource
             UserFields::FULL_NAME  => $this->{UserFields::FULL_NAME},
             UserFields::EMAIL      => $this->{UserFields::EMAIL},
             UserFields::MOBILE     => $this->{UserFields::MOBILE},
-            UserFields::CREATED_AT => jdate($this->{UserFields::CREATED_AT})->ago(),
+            UserFields::CREATED_AT => date($this->{UserFields::CREATED_AT}),
         ];
     }
 }
