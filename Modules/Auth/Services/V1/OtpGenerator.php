@@ -37,7 +37,7 @@ class OtpGenerator
         // The expiration time
         $expiration = now()->addSecond($this->otp_expire_time);
         // Store OTP in cache
-        return $result && Cache::put(cacheOtpKey($recipient), $otp, $expiration);
+        return $result && Cache::put(cache_otp_key($recipient), $otp, $expiration);
     }
 
     /**
@@ -49,7 +49,7 @@ class OtpGenerator
      */
     public function verify(string $recipient, string $code): bool
     {
-        $cacheKey = cacheOtpKey($recipient);
+        $cacheKey = cache_otp_key($recipient);
 
         return Cache::get($cacheKey) == $code && Cache::forget($cacheKey);
     }
