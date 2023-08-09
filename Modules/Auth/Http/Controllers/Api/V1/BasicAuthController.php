@@ -58,7 +58,6 @@ class BasicAuthController extends ApiController
         return $this->successResponse(new AuthResource($user,$token),__('auth::response.register_success'));
     }
 
-
     /**
      * Revokes all the authenticated user's Sanctum tokens and logs them out.
      *
