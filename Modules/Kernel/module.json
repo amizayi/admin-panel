@@ -7,5 +7,7 @@
     "providers": [
         "Modules\\Kernel\\Providers\\KernelServiceProvider"
     ],
-    "files": []
+    "files": [
+        "Helpers/helpers.php"
+    ]
 }

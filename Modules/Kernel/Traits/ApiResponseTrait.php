@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Api\Traits;
+namespace Modules\Kernel\Traits;
 
-use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Http\JsonResponse;
 use Exception;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 

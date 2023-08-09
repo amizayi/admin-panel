@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Api\Exceptions\V1;
+namespace Modules\Kernel\Exceptions\V1;
 
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -10,7 +10,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-use Modules\Api\Traits\ApiResponseTrait;
+use Modules\Kernel\Traits\ApiResponseTrait;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;

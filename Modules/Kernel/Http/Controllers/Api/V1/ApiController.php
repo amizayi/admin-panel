@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Api\Http\Controllers\Api\V1;
+namespace Modules\Kernel\Http\Controllers\Api\V1;
 
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
-use Modules\Api\Traits\ApiResponseTrait;
+use Modules\Kernel\Traits\ApiResponseTrait;
 
 class ApiController extends Controller
 {

@@ -3,7 +3,7 @@
 namespace Modules\User\Http\Controllers\Api\V1;
 
 use Illuminate\Http\JsonResponse;
-use Modules\Api\Http\Controllers\Api\V1\ApiController;
+use Modules\Kernel\Http\Controllers\Api\V1\ApiController;
 use Modules\User\Entities\V1\User\UserFields;
 use Modules\User\Http\Requests\Api\V1\UserRequest;
 use Modules\User\Transformers\V1\User\UserResource;
