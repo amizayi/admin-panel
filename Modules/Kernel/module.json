@@ -1,0 +1,11 @@
+{
+    "name": "Kernel",
+    "alias": "kernel",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Kernel\\Providers\\KernelServiceProvider"
+    ],
+    "files": []
+}
