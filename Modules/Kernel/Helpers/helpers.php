@@ -37,6 +37,6 @@ if (!function_exists('__response')) {
      */
     function __response(string $name = "", string $type = "base", string $key = "success"): string
     {
-        return __("api::response.$key.$type", ['name' => $name]);
+        return __("kernel::response.$key.$type", ['name' => $name]);
     }
 }
