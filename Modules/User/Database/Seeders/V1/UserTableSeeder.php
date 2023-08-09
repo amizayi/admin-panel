@@ -33,10 +33,10 @@ class UserTableSeeder extends Seeder
     {
         $user =user()->create([
             UserFields::USERNAME          => "system_administrator",
-            UserFields::FIRST_NAME        => fake()->firstName(),
-            UserFields::LAST_NAME         => fake()->lastName(),
-            UserFields::EMAIL             => fake()->email(),
-            UserFields::MOBILE            => fake()->phoneNumber(),
+            UserFields::FIRST_NAME        => "Amirreza",
+            UserFields::LAST_NAME         => "Rezaei",
+            UserFields::EMAIL             => "realDevAmiza@gmail.com",
+            UserFields::MOBILE            => "09150531090",
             UserFields::EMAIL_VERIFIED_AT => now(),
             UserFields::PASSWORD          => Hash::make("system_administrator"),
             UserFields::STATUS            => UserStatus::ACTIVE
