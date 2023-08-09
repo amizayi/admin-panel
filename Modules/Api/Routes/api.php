@@ -3,5 +3,9 @@
 
 
 Route::get('/dev', function () {
-    dd('hi');
+    return true;
 })->middleware('log.activity');
+
+Route::get('/test', function () {
+    return true;
+});

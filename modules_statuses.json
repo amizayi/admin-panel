@@ -6,5 +6,6 @@
     "Auth": true,
     "Media": true,
     "Setting": true,
-    "LogActivity": true
+    "LogActivity": true,
+    "Kernel": true
 }
