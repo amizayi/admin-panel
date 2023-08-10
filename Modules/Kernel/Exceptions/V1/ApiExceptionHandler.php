@@ -5,6 +5,7 @@ namespace Modules\Kernel\Exceptions\V1;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
@@ -55,9 +56,14 @@ class ApiExceptionHandler extends ExceptionHandler
                                                          $e->getMessage(),
                                                          Response::HTTP_UNPROCESSABLE_ENTITY
                                                      ),
-            $e instanceof NotFoundHttpException   => $this->processParseError($e->getMessage(), $e, Response::HTTP_NOT_FOUND),
+
+            $e instanceof NotFoundHttpException, $e instanceof ModelNotFoundException
+                                                  => $this->processParseError($e->getMessage(), $e, Response::HTTP_NOT_FOUND),
+
             $e instanceof AuthorizationException  => $this->processParseError($e->getMessage(), $e, Response::HTTP_FORBIDDEN),
+
             $e instanceof AuthenticationException => $this->processParseError($e->getMessage(), $e, Response::HTTP_UNAUTHORIZED),
+
             $e instanceof QueryException          => $this->processParseError($e->getMessage(), $e, Response::HTTP_BAD_REQUEST),
 
             default => $this->processParseError($e->getMessage(), $e),
