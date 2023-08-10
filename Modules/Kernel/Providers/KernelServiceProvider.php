@@ -16,6 +16,11 @@ class KernelServiceProvider extends ServiceProvider
         $this->registerException();
     }
 
+    /**
+     * Register the exceptions.
+     *
+     * @return void
+     */
     private function registerException(): void
     {
         $this->app->singleton(

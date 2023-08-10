@@ -20,10 +20,14 @@ class LogActivityMiddleware
      */
     public function handle(Request $request, Closure $next): mixed
     {
-        try {
+        try
+        {
             $logInfo = (new Logger())->info($request);
-            LoggerJob::dispatch($logInfo)->onQueue('activity_logs'); // Optionally, you can specify the queue name.
-        } catch (Exception $e) {
+
+            LoggerJob::dispatch($logInfo)->onQueue('activity_logs');
+        }
+        catch (Exception $e)
+        {
             // Log the exception for debugging purposes
             Log::error('Error in Logger middleware: ' . $e->getMessage());
         }
