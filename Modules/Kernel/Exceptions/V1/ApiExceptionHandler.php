@@ -50,7 +50,11 @@ class ApiExceptionHandler extends ExceptionHandler
     public function render($request, Exception|Throwable $e): JsonResponse
     {
         return match (true) {
-            $e instanceof ValidationException     => $this->errorResponse($e->validator->getMessageBag()->toArray(),$e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY),
+            $e instanceof ValidationException     => $this->errorResponse(
+                                                         $e->validator->getMessageBag()->toArray(),
+                                                         $e->getMessage(),
+                                                         Response::HTTP_UNPROCESSABLE_ENTITY
+                                                     ),
             $e instanceof NotFoundHttpException   => $this->processParseError($e->getMessage(), $e, Response::HTTP_NOT_FOUND),
             $e instanceof AuthorizationException  => $this->processParseError($e->getMessage(), $e, Response::HTTP_FORBIDDEN),
             $e instanceof AuthenticationException => $this->processParseError($e->getMessage(), $e, Response::HTTP_UNAUTHORIZED),

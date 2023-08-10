@@ -35,7 +35,7 @@ trait ApiResponseTrait
      * @param int $status
      * @return JsonResponse
      */
-    public function errorResponse( array|string $errors,string $errorMessages = '', int $status = Response::HTTP_NOT_FOUND): JsonResponse
+    public function errorResponse( array|string $errors,string $errorMessages = '', int $status = Response::HTTP_INTERNAL_SERVER_ERROR): JsonResponse
     {
         return response()->json([
             'status'  => false,
