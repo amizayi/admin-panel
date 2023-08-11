@@ -93,7 +93,7 @@ class UserController extends ApiController
     }
 
     /**
-     * Get Request Fields
+     * Get Request Constants
      *
      * @return array
      */

@@ -3,7 +3,7 @@
 namespace Modules\Media\Services\V1;
 
 use Illuminate\Http\UploadedFile;
-use Modules\Media\Fields\V1\DiskFields;
+use Modules\Media\Constants\V1\DiskFields;
 
 class FTPMediaService
 {
