@@ -6,7 +6,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Modules\Media\Entities\V1\Media\MediaFields;
-use Modules\Media\Fields\V1\DiskFields;
+use Modules\Media\Constants\V1\DiskFields;
 
 class PublicMediaService extends BaseMediaService
 {
