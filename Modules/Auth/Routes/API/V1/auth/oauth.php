@@ -10,5 +10,7 @@ Route::prefix('oauth')
         require 'oauth/github.php',
         // Google
         require 'oauth/google.php',
+        // Facebook
+        require 'oauth/facebook.php',
 
     ]);
