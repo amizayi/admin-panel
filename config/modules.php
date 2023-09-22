@@ -27,11 +27,9 @@ return [
 
     'stubs' => [
         'enabled' => true,
-        'path'  => base_path('stubs/amiza-stubs'),
+        'path'  => base_path('stubs/coreicode-stubs'),
         'files' => [
             'routes/web' => 'Routes/web.php',
-            'routes/api' => 'Routes/api.php',
-            'composer'   => 'composer.json',
         ],
         'replacements' => [
             'routes/web'      => ['LOWER_NAME', 'STUDLY_NAME'],
@@ -106,7 +104,7 @@ return [
             'request'         => ['path' => 'Http/Requests', 'generate'              => false ],
             'provider'        => ['path' => 'Providers', 'generate'                  => true  ],
             'assets'          => ['path' => 'Resources/assets', 'generate'           => false ],
-            'lang'            => ['path' => 'Lang', 'generate'                       => true  ],
+            'lang'            => ['path' => 'Lang', 'generate'                       => false  ],
             'views'           => ['path' => 'Resources/views', 'generate'            => false ],
             'test'            => ['path' => 'Tests/Unit', 'generate'                 => false ],
             'test-feature'    => ['path' => 'Tests/Feature', 'generate'              => false ],
@@ -120,7 +118,7 @@ return [
             'notifications'   => ['path' => 'Notifications', 'generate'              => false ],
             'resource'        => ['path' => 'Transformers', 'generate'               => false ],
             'component-view'  => ['path' => 'Resources/views/components', 'generate' => false ],
-            'component-class' => ['path' => 'View/Components', 'generate'            => false ],
+            'component-class' => ['path' => 'View/components', 'generate'            => false ],
         ],
     ],
 
@@ -207,10 +205,10 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'DevAmiza',
+        'vendor' => 'amizayi',
         'author' => [
-            'name' => 'Amirreza Rezaei',
-            'email' => 'realDevAmiza@gmail.com',
+            'name'  => 'Amirreza Rezaei',
+            'email' => 'callAmizayi@gmail.com',
         ],
         'composer-output' => false,
     ],
@@ -224,9 +222,9 @@ return [
     |
     */
     'cache' => [
-        'enabled' => false,
-        'driver' => 'file',
-        'key' => 'laravel-modules',
+        'enabled'  => false,
+        'driver'   => 'file',
+        'key'      => 'laravel-modules',
         'lifetime' => 60,
     ],
     /*
@@ -259,9 +257,9 @@ return [
     */
     'activators' => [
         'file' => [
-            'class' => FileActivator::class,
-            'statuses-file' => base_path('modules_statuses.json'),
-            'cache-key' => 'activator.installed',
+            'class'          => FileActivator::class,
+            'statuses-file'  => base_path('modules_statuses.json'),
+            'cache-key'      => 'activator.installed',
             'cache-lifetime' => 604800,
         ],
     ],

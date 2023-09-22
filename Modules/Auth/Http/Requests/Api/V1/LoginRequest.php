@@ -4,7 +4,7 @@ namespace Modules\Auth\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Modules\Auth\Fields\V1\AuthFields;
-use Modules\Kernel\Rules\CustomBooleanRule;
+use Modules\Global\Rules\CustomBooleanRule;
 
 class LoginRequest extends FormRequest
 {
