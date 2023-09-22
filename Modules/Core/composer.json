@@ -14,6 +14,10 @@
             }
         }
     },
+    "require": {
+        "morilog/jalali": "^3.4",
+        "prettus/l5-repository": "^2.9.0"
+    },
     "autoload": {
         "psr-4": {
             "Modules\\Core\\": ""
