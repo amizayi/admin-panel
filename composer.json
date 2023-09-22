@@ -62,9 +62,9 @@
             "replace": false,
             "ignore-duplicates": false,
             "merge-dev": true,
-            "merge-extra": false,
-            "merge-extra-deep": false,
-            "merge-replace": false,
+            "merge-extra": true,
+            "merge-extra-deep": true,
+            "merge-replace": true,
             "merge-scripts": false
         }
     },
