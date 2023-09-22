@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+#region Usages
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
@@ -27,6 +28,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
+#endregion
 
 class Kernel extends HttpKernel
 {
