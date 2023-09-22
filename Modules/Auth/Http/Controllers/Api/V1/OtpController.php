@@ -8,7 +8,7 @@ use Modules\Auth\Http\Requests\Api\V1\VerifyRequest;
 use Modules\Auth\Services\V1\OtpGenerator;
 use Modules\Auth\Traits\V1\AuthTrait;
 use Modules\Auth\Transformers\V1\AuthResource;
-use Modules\Kernel\Http\Controllers\Api\V1\ApiController;
+use Modules\Global\Http\Controllers\Api\V1\ApiController;
 
 class OtpController extends ApiController
 {

@@ -2,7 +2,7 @@
 
 namespace Modules\User\Tests\Feature\Api\V1\UserController;
 
-use Modules\Kernel\Tests\BaseTestCase;
+use Modules\Global\Tests\BaseTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\User\Entities\V1\User\UserFields;
 

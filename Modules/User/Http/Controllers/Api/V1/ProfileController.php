@@ -4,7 +4,7 @@ namespace Modules\User\Http\Controllers\Api\V1;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Modules\Kernel\Http\Controllers\Api\V1\ApiController;
+use Modules\Global\Http\Controllers\Api\V1\ApiController;
 use Modules\User\Entities\V1\User\UserFields;
 use Modules\User\Transformers\V1\Profile\ProfileResource;
 

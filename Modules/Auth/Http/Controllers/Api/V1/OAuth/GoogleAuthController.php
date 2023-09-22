@@ -5,7 +5,7 @@ namespace Modules\Auth\Http\Controllers\Api\V1\OAuth;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
-use Modules\Kernel\Http\Controllers\Api\V1\ApiController;
+use Modules\Global\Http\Controllers\Api\V1\ApiController;
 
 class GoogleAuthController extends ApiController
 {
